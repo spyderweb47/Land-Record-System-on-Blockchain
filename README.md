@@ -13,3 +13,11 @@
 ### Storing Land information on Syncronized Hybride Blockchain (Public and Private)
 
 ![alt text](https://raw.githubusercontent.com/spyderweb47/Land-Record-System-on-Blockchain/main/screenshots/modal.png "modal")
+
+![alt text](https://raw.githubusercontent.com/spyderweb47/Land-Record-System-on-Blockchain/main/screenshots/demo.png "demo")
+
+#Screeenshots
+
+##User
+
+##Admin
