@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+  <!-- <link rel="stylesheet" href="style.css" /> -->
+  <link rel="stylesheet" href="./css/home-page.css" />
+  <link rel="stylesheet" href="./css/login-section.css" />
+  <link rel="stylesheet" href="./css/footer.css" />
+  <link rel="stylesheet" href="./css/clock.css" />
+  <link rel="stylesheet" href="./css/footer.css" />
+  <title>Land Records System</title>
+  <style>
+    .form-select {
+      height: 45px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <header>
+    <a href="/" class="brand">LRS</a>
+    <div class="menu-btn"></div>
+    <div class="navigation">
+      <div class="navigation-items">
+        <!-- <a href="/admin_login.html">Admin Login</a> -->
+      </div>
+    </div>
+  </header>
+
+
+
+
+
+
+  <section class="home">
+    <img src="./img/land.png" alt="land">
+    <!-- <img class="video-slide active" src="./img/homepage" alt="homepage"> -->
+    <!-- <video class="video-slide active" src="./img/video/2.mp4" autoplay muted loop></video> -->
+    <video class="video-slide active" src="./img/video/2.mp4" autoplay muted loop></video>
+    <!-- <video class="video-slide" src="./img/video/3.mp4" autoplay muted loop></video>
+    <video class="video-slide" src="./img/video/4.mp4" autoplay muted loop></video>
+    <video class="video-slide" src="./img/video/5.mp4" autoplay muted loop></video> -->
+    <div class="content active">
+      <h1><span>Land Records</span><br><span>System</span></h1>
+      <p>Blockchain-Based Land Record System Services to maintain the land registry information securely and
+        consistently. 
+        <br>
+        Land owner search - Provides land owners with recent land valuation info. </p>
+
+        
+      <a href="/search.html">Search Your Land</a>
+    </div>   
+
+    
+
+      </section>
+
+
+
+
+   <!-- *********************************Search Section****************************************** -->
+  <!-- Not for use -->
+
+
+
+  <section class="login-section" id="login-connect">
+    <div class="container-login">
+      <div class="title">Enter Your Land Details</div>
+      <div class="content">
+        <form action="/User/search.html">
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Plot ID:</span>
+              <input type="text" placeholder="Enter Your Plot ID">
+              <!-- <input type="text" id="plotid_input" placeholder="Enter Your Plot ID" required> -->
+            </div>
+            <!-- <div class="input-box">
+              <span class="details">Select State:</span>
+              <select id="selectstate" class="form-select">
+                <option selected>Select State &emsp;&emsp;&emsp;&emsp;&emsp;</option>
+                <option>Maharshtra</option>
+              </select>
+            </div>
+            <div class="input-box">
+              <span class="details">Select City:</span>
+              <select id="selectstate" class="form-select">
+                <option selected>Select City &emsp;&emsp;&emsp;&emsp;&emsp;</option>
+                <option>Mumbai</option>
+                <option>Pune</option>
+                <option>Nagpur</option>
+                <option>Kolhapur</option>
+                <option>Nanded</option>
+              </select>
+            </div>  -->      
+            <div class="input-box">
+              <span class="details">Pincode:</span>
+              <input type="text" placeholder="Enter your Area Pincode">
+            </div>  
+          </div>        
+          <div class="button">
+            <input type="submit" id="user_search_button" value="Search">
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- *************************************search section End*************************************  -->
+
+
+
+
+  
+  <!-- ********************************Clock Start*************************** -->
+  <!-- <section id="clock-section">
+    <div id="clock-time">
+  
+      <div class="clock-circle" style="--clr:#e70a0a;">
+        <div class="clock-dots hr_dot"></div>
+        <svg>
+          <circle cx="70" cy="70" r="70"></circle>
+          <circle cx="70" cy="70" r="70" id="hh"></circle>
+        </svg>
+        <div id="clock-hours">00</div>
+      </div>
+      <div class="clock-circle" style="--clr:#fee800;">
+        <div class="clock-dots min_dot"></div>
+        <svg>
+          <circle cx="70" cy="70" r="70"></circle>
+          <circle cx="70" cy="70" r="70" id="mm"></circle>
+        </svg>
+        <div id="clock-minutes">00</div>
+      </div>
+      <div class="clock-circle" style="--clr:#04fc43;">
+        <div class="clock-dots sec_dot"></div>
+        <svg>
+          <circle cx="70" cy="70" r="70"></circle>
+          <circle cx="70" cy="70" r="70" id="ss"></circle>
+        </svg>
+        <div id="clock-seconds">00</div>
+      </div>
+      <div class="clock-ap">
+        <div id="clock-ampm">AM</div>
+      </div>
+    </div>
+  
+  </section> -->
+
+
+  
+  
+  
+  
+    
+    <footer>
+ 
+      <!-- <div class="clock d-flex justify-content-center">
+        <div class="hours">
+          <div class="first">
+            <div class="number">0</div>
+          </div>
+          <div class="second">
+            <div class="number">0</div>
+          </div>
+        </div>
+        <div class="tick">:</div>
+        <div class="minutes">
+          <div class="first">
+            <div class="number">0</div>
+          </div>
+          <div class="second">
+            <div class="number">0</div>
+          </div>
+        </div>
+        <div class="tick">:</div>
+        <div class="seconds">
+          <div class="first">
+            <div class="number">0</div>
+          </div>
+          <div class="second infinite">
+            <div class="number">0</div>
+          </div>
+        </div>
+      </div> -->
+    
+      <p>Copyright © 2022 All Right Reserved by LRS</p>
+    </footer>
+
+
+
+
+
+
+
+
+
+
+  <script src="./js/smooth-scroll.js"></script>
+  <script type="text/javascript" src="./js/slider.js">
+
+
+
+    
+
+  </script>
+  <script type="text/javascript">
+
+function redirect(address)
+{
+window.location.href=`/${address}.html`;
+}
+
+
+  </script>
+  <script src="./js/clock.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+
+
+
+
+  <!-- <script src="app.js"></script> -->
+</body>
+
+</html>

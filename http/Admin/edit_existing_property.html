@@ -1,0 +1,1527 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/7507e36a2a.js" crossorigin="anonymous"></script>
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="./css/side-menu.css">
+
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/clock.css" />
+  <link rel="stylesheet" href="./css/footer.css" />
+
+  <title>admin Panel</title>
+  <style>
+
+    body{
+      background-color: #efefef;
+    }
+    .edit_container {
+      margin: auto;
+      margin-bottom: 25px;
+
+      width: 75%;
+      /* border: 3px solid black; */
+      /* box-shadow: 0 40px 400px rgba(0, 0, 0, 1); */
+      box-shadow: 0 1px 8px rgba(0, 0, 0, 1);
+      border-radius: 15px;
+      padding: 44px;
+      background-color: #ffffff;
+    }
+
+    .form-control {
+      /* width: 70%; */
+    }
+
+    .form-select {
+
+      margin-bottom: 16px;
+      /* width: 70%; */
+    }
+
+    .navbar {
+      margin-bottom: 30px;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      margin-left: 77px;
+      color: #ffffff;
+    }
+
+    .nav-link {
+      font-weight: 500;
+    }
+
+    .btn-group {
+      padding: 10px;
+    }
+
+    .btn-left {
+      margin-left: 16px;
+      margin-right: 16px;
+      margin-top: 0;
+      margin-bottom: 0;
+      height: 32px;
+      border-radius: 20px;
+      font-size: 11px;
+
+    }
+
+    .modal-footer {
+      padding: 5px;
+    }
+
+    .btn-w-h {
+      height: 36px;
+      width: 82px;
+      height: 32px;
+      border-radius: 20px;
+      font-size: 11px;
+    }
+
+    .modal-body-kyc {
+      padding-top: 0;
+    }
+
+    .modal-body-plot {
+      padding-top: 0;
+    }
+
+    .padding-align {
+      padding: 7px 12px;
+    }
+
+    .col-sm-2 {
+      width: 30%;
+    }
+
+    .col-sm-10 {
+      width: 69%;
+    }
+
+    .padding-gen {
+      padding-left: 3px;
+
+    }
+
+    .linear-bg-btn {
+      width: 181px;
+      font-size: 16px;
+      font-weight: 400;
+      color: #fff;
+      cursor: pointer;
+
+      height: 43px;
+      text-align: center;
+      border: none;
+      background-size: 300% 100%;
+
+      border-radius: 50px;
+      moz-transition: all .4s ease-in-out;
+      -o-transition: all .4s ease-in-out;
+      -webkit-transition: all .4s ease-in-out;
+      transition: all .4s ease-in-out;
+    }
+
+    .linear-bg-btn:hover {
+      background-position: 100% 0;
+      moz-transition: all .4s ease-in-out;
+      -o-transition: all .4s ease-in-out;
+      -webkit-transition: all .4s ease-in-out;
+      transition: all .4s ease-in-out;
+    }
+
+    .linear-bg-btn:focus {
+      outline: none;
+    }
+
+    .linear-bg-btn {
+      /* background: linear-gradient(-135deg, #c850c0, #4158d0);
+      border: linear-gradient(-135deg, #c850c0, #4158d0); */
+      box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
+      background-image: linear-gradient(to right, #667eea, #003a55, #6B8DD6, #003a55);
+
+    }
+
+    .modal-linear-bg-btn {
+      width: 110px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      cursor: pointer;
+      margin: 8px;
+      height: 42px;
+      text-align: center;
+      border: none;
+      background-size: 300% 100%;
+
+      border-radius: 50px;
+      moz-transition: all .4s ease-in-out;
+      -o-transition: all .4s ease-in-out;
+      -webkit-transition: all .4s ease-in-out;
+      transition: all .4s ease-in-out;
+    }
+
+    .modal-linear-bg-btn:hover {
+      background-position: 100% 0;
+      moz-transition: all .4s ease-in-out;
+      -o-transition: all .4s ease-in-out;
+      -webkit-transition: all .4s ease-in-out;
+      transition: all .4s ease-in-out;
+    }
+
+    .modal-linear-bg-btn:focus {
+      outline: none;
+    }
+
+    .modal-linear-bg-btn {
+      /* background: linear-gradient(-135deg, #c850c0, #4158d0);
+      border: linear-gradient(-135deg, #c850c0, #4158d0); */
+      box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
+      /* background-image: linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7); */
+      background-image: linear-gradient(to right, #667eea, #003a55, #6B8DD6, #003a55);
+
+    }
+
+    #singletransfer {
+      display: none;
+      /* visibility: hidden; */
+    }
+
+    #multipletransfer {
+      display: none;
+    }
+
+    .search_option {
+      /* margin: auto;
+        
+        width: 75%;
+        border: 1px solid black;
+        border-radius: 15px;
+        padding: 44px; */
+      margin-bottom: 40px;
+      margin-top: 20px;
+      margin-left: auto;
+      margin-right: auto;
+      /* margin-left: 85px; */
+      width: 44%;
+      /* border: 3px solid black; */
+      border-radius: 15px;
+      padding: 40px 50px 20px 50px;
+      box-shadow: 0 1px 8px rgba(0, 0, 0, 1);
+      background-color: #ffffff;
+      /* box-shadow: 0 5px 16px rgb(0 0 0); */
+    }
+    .navbar-expand-lg .navbar-nav .nav-link {
+        color: #ffffff;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg" style="background: #003a55;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/index.html">LRS</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/index.html">Home</a>
+          </li>
+
+
+        </ul>
+        <!-- <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-primary" type="submit">Search</button>
+          </form> -->
+        <!-- navbar-dark bg-dark -->
+      </div>
+    </div>
+  </nav>
+  <div class="sidebar">
+    <div class="logo-details">
+        <div class="logo_name">LRS</div>
+        <i class='bx bx-menu' id="btn"></i>
+    </div>
+    <ul class="nav-list p-f">
+        <li>
+            <a href="/view_property.html">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <span class="links_name">SEARCH RECORDS</span>
+            </a>
+            <span class="tooltip">SEARCH RECORDS</span>
+          </li>
+        <li>
+            <a href="/add_new_property.html">
+
+                <i class="fa-solid fa-plus"></i>
+                <span class="links_name">ADD RECORD</span>
+            </a>
+            <span class="tooltip">ADD RECORD</span>
+        </li>
+        <li>
+            <a href="/edit_existing_property.html">
+                <i class="fa-solid fa-file-pen"></i>
+                <span class="links_name">EDIT EXISTING</span>
+            </a>
+            <span class="tooltip">EDIT EXISTING RECORD</span>
+        </li>
+        <li>
+            <a href="/previous_owners.html">
+              <!-- <i class='bx bx-grid-alt'></i> -->
+              <i class="fa-solid fa-rotate-left"></i>
+              <span class="links_name">PREVIOUS OWNERS</span>
+            </a>
+            <span class="tooltip">SEARCH PREVIOUS OWNERS</span>
+          </li>
+        <li>
+            <a href="/user.html">
+                <i class='bx bx-user'></i>
+                <span class="links_name">Users</span>
+            </a>
+            <span class="tooltip">Users</span>
+        </li>
+        <li>
+          <a href="http://127.0.0.1:8000/">
+            <!-- <i class='bx bx-grid-alt'></i> -->
+            <i class="fa-solid fa-database"></i>
+            <span class="links_name">Upload Data</span>
+          </a>
+          <span class="tooltip">UPLOAD PREVIOUS OWNERS DATA</span>
+        </li>
+      
+        <!-- <li>
+            <a href="#">
+                <i class='bx bx-cog'></i>
+                <span class="links_name">Setting</span>
+            </a>
+            <span class="tooltip">Setting</span>
+        </li> -->
+        <li class="profile">
+            <div class="profile-details">
+                <img src="./img/face-1.png" alt="profileImg">
+                <div class="name_job">
+                    <div class="name">Suraj</div>
+                    <div class="job">ADMIN</div>
+                </div>
+            </div>
+            <a href="/admin_login.html">
+                <i class='bx bx-log-out' href="/admin_login.html" id="log_out" style="color: #ffffff;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+  <!-- <form>
+    <div class="container">
+      <h4 class="text-center">Search By PLOT ID OR Aadhar ID </h4>
+      <br>
+      <div class="row mb-3">
+        <label for="colFormLabel" class="col-sm-2 col-form-label">Plot ID:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="colFormLabel" placeholder="Enter Plot ID Here">
+        </div>
+      </div>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-primary me-md-2" type="submit">Search</button>
+
+      </div>
+      <h3 class="text-center">OR</h3>
+      <div class="row mb-3">
+        <label for="colFormLabel" class="col-sm-2 col-form-label">Aadhar ID:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="colFormLabel" placeholder="Enter Aadhar Card Number">
+        </div>
+      </div>
+
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-primary me-md-2" type="submit">Search</button>
+
+      </div>
+
+
+    </div>
+  </form> -->
+  <br>
+
+  <div class="search_option">
+    <h4 class="text-center" style="margin-bottom: 40px;     font-size: 18px;">Search Your Land Details Below</h4>
+    <!-- <form> -->
+    <div class="form-row">
+      <div class="col">
+
+        <input type="text" id="editsearch_input" class="form-control text-center" placeholder="Enter PlotID" style="   width: 100%; margin-bottom: 20px;
+      height: 40px; font-size: 13px;" required>
+
+        <div class="text-center">
+          <button onclick="plotid = document.getElementById('editsearch_input').value;showOwner();" type="submit" id="single_edit"
+            class=" btn btn-primary btn-sm btn-w-h modal-linear-bg-btn" style="width: 242px;">Single Owner
+            Transfer</button>
+
+          <button onclick="multipleTransfer()" type="submit" id="split_edit"
+            class=" btn btn-primary btn-sm btn-w-h modal-linear-bg-btn" style="width: 242px;">Multiple Owner
+            Transfer</button>
+        </div>
+        <!-- <div class="col">
+      <input type="text" class="form-control" placeholder="Last name">
+    </div> -->
+      </div>
+    </div>
+  </div>
+
+
+
+  <br>
+
+  <div class="edit_container" id="singletransfer">
+    <form id="form2">
+
+
+
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px; background: none;
+    border: none;">Plot ID :</span>
+        </div>
+        <span id="view_plotid" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+  
+  
+      </div>
+
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px; background: none;
+    border: none;">Owner Name:</span>
+        </div>
+        <span id="view_ownername" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+  
+  
+      </div>
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px;"> New Owner Name:</span>
+        </div>
+        <input type="text" class="form-control" id="newowner_input" placeholder="Enter  New Owner Name">  
+      </div>
+      
+
+
+    <div class="input-group input-group-sm mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px; background: none;
+    border: none;">Land Category:</span>
+      </div>
+      <span id="view_landtype" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+
+
+    </div>
+
+
+    <div class="input-group input-group-sm mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px;"> New Land Category:</span>
+      </div>
+      <button class="btn btn-primary linear-bg-btn" id="change_landtype" type="button" data-toggle="collapse"
+              data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              Change Category
+            </button>
+
+
+    </div>
+
+
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          <div class="row md-3">
+            <!-- <label for="colFormLabel" class="col-sm-2 col-form-label">Select Land Category:</label> -->
+            <div class="col-sm-10 padding-align">
+              <select id="new_landtype" class="form-select">
+                <option selected>Select Category ...</option>
+                <option>Residential</option>
+                <option>Agricultural</option>
+                <option>Industrial</option>
+                <option>Commercial</option>
+            <option>Government(Open Space)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px; background: none;
+    border: none;">Geolocation Data:</span>
+        </div>
+        
+        <span id="view_geodata_1" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+  
+        <!-- <div class="input-group-prepend"></div>
+        <span id="view_geodata_1" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+        
+        <div class="input-group-prepend"></div>
+        <span id="view_geodata_2" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+        
+        <div class="input-group-prepend"></div>
+        <span id="view_geodata_3" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+        
+        <div class="input-group-prepend"></div>
+        <span id="view_geodata_4" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+         -->
+  
+      </div>
+  
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm"
+            style="width: 175px; border:none; background:none;"></span>
+        </div>
+        <span id="view_geodata_2" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm" style="
+        height: 38px;
+    "></span>
+  
+      </div>
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm"
+            style="width: 175px; border:none; background:none;"></span>
+        </div>
+        <span id="view_geodata_3" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm" style="
+        height: 38px;
+    "></span>
+  
+      </div>
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm"
+            style="width: 175px; border:none; background:none;"></span>
+        </div>
+        <span id="view_geodata_4" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm" style="
+        height: 38px;
+    "></span>
+  
+      </div>
+  
+
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px; background: none;
+    border: none;">Purchase Amount:</span>
+        </div>
+        <span id="view_amount" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+  
+  
+      </div>
+
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px;">New Purchase Amount:</span>
+        </div>
+        <input type="number" class="form-control" id="newpurchase_amount" placeholder="Enter  New Purchase Amount">
+  
+  
+      </div>
+
+
+
+
+
+
+      
+
+    <div class="input-group input-group-sm mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px; background: none;
+    border: none;">Date of Registry:</span>
+      </div>
+      <span id="view_registration" class="form-control" aria-label="small"
+        aria-describedby="inputGroup-sizing-sm"></span>
+
+
+    </div>
+
+    <div class="input-group input-group-sm mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px;">New Date of Registry:</span>
+      </div>
+      <input type="date" class="form-control" id="new_registration" placeholder="DD-MM-YYYY">
+
+
+    </div>
+
+
+
+
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px; background: none;
+    border: none;">Pincode:</span>
+        </div>
+        <span id="view_pincode" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+  
+  
+      </div>
+
+
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px; background: none;
+    border: none;">Aadhar No:</span>
+        </div>
+        <span id="view_kycid" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+  
+  
+      </div>
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px;">New Aadhar No:</span>
+        </div>
+        <input type="text" class="form-control" id="new_kycid" placeholder="Enter  New Aadhar Card Number">
+  
+  
+      </div>
+
+
+
+
+
+
+
+      
+
+
+
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px; background: none;
+    border: none;">Phone no:</span>
+        </div>
+        <span id="view_contact" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+  
+  
+      </div>
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px;">New Phone no:</span>
+        </div>
+        <input type="phone" class="form-control" id="new_contactno" placeholder="Enter  New Contact Number">
+  
+  
+      </div>
+
+
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px; background: none;
+    border: none;">Survey No:</span>
+        </div>
+        <span id="view_surveyno" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+  
+  
+      </div>
+
+<!-- 
+      <div class="row mb-3">
+        <label for="colFormLabel" class="col-sm-2 col-form-label">D.O.B:</label>
+        <div class="col-sm-10 padding-align">
+          <p id="view_dob">DD-MM-YYYY</p>
+        </div>
+      </div>
+
+
+
+
+      <div class="row mb-3">
+        <label for="colFormLabel" class="col-sm-2 col-form-label">New OwnerD.O.B:</label>
+        <div class="col-sm-10 padding-align">
+          <input type="date" class="form-control" id="colFormLabel" placeholder="DD-MM-YYYY">
+        </div>
+      </div> -->
+
+
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-primary me-md-2 linear-bg-btn" type="button" onclick="AddLandData()">Change Owner</button>
+
+      </div>
+
+
+    </form>
+  </div>
+
+
+
+
+
+
+
+
+
+  <!-- ****************************Multiple Transfer FOrm************************************ -->
+
+
+  <div class="edit_container" id="multipletransfer">
+    <form>
+
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px; background: none;
+    border: none;">Plot ID :</span>
+        </div>
+        <span id="view_plotid" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+  
+  
+      </div>
+
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px; background: none;
+    border: none;">Owner Name:</span>
+        </div>
+        <span id="view_ownername" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+  
+  
+      </div>
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px;"> New Owner Name:</span>
+        </div>
+        <input type="text" class="form-control" id="colFormLabel" placeholder="Enter  New Owner Name">  
+      </div>
+      
+
+
+    <div class="input-group input-group-sm mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px; background: none;
+    border: none;">Land Category:</span>
+      </div>
+      <span id="view_landtype" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+
+
+    </div>
+
+
+    <div class="input-group input-group-sm mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px;"> New Land Category:</span>
+      </div>
+      <button class="btn btn-primary linear-bg-btn" id="change_landtype" type="button" data-toggle="collapse"
+              data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              Change Category
+            </button>
+
+
+    </div>
+
+
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          <div class="row md-3">
+            <!-- <label for="colFormLabel" class="col-sm-2 col-form-label">Select Land Category:</label> -->
+            <div class="col-sm-10 padding-align">
+              <select id="landtype" class="form-select">
+                <option selected>Select Category ...</option>
+                <option>Residential</option>
+                <option>Agricultural</option>
+                <option>Industrial</option>
+                <option>...</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px; background: none;
+    border: none;">Geolocation Data:</span>
+        </div>
+        <span id="view_geodata_1" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+  
+        <!-- <div class="input-group-prepend"></div>
+        <span id="view_geodata_1" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+        
+        <div class="input-group-prepend"></div>
+        <span id="view_geodata_2" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+        
+        <div class="input-group-prepend"></div>
+        <span id="view_geodata_3" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+        
+        <div class="input-group-prepend"></div>
+        <span id="view_geodata_4" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+         -->
+  
+      </div>
+  
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm"
+            style="width: 175px; border:none; background:none;"></span>
+        </div>
+        <span id="view_geodata_2" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm" style="
+        height: 38px;
+    "></span>
+  
+      </div>
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm"
+            style="width: 175px; border:none; background:none;"></span>
+        </div>
+        <span id="view_geodata_3" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm" style="
+        height: 38px;
+    "></span>
+  
+      </div>
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm"
+            style="width: 175px; border:none; background:none;"></span>
+        </div>
+        <span id="view_geodata_4" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm" style="
+        height: 38px;
+    "></span>
+  
+      </div>
+  
+
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px; background: none;
+    border: none;">Purchase Amount:</span>
+        </div>
+        <span id="view_amount" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+  
+  
+      </div>
+
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px;">New Purchase Amount:</span>
+        </div>
+        <input type="number" class="form-control" id="colFormLabel" placeholder="Enter  New Purchase Amount">
+  
+  
+      </div>
+
+
+
+
+
+
+      
+
+    <div class="input-group input-group-sm mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px; background: none;
+    border: none;">Date of Registry:</span>
+      </div>
+      <span id="view_registration" class="form-control" aria-label="small"
+        aria-describedby="inputGroup-sizing-sm"></span>
+
+
+    </div>
+
+    <div class="input-group input-group-sm mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px;">New Date of Registry:</span>
+      </div>
+      <input type="date" class="form-control" id="colFormLabel" placeholder="DD-MM-YYYY">
+
+
+    </div>
+
+
+
+
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px; background: none;
+    border: none;">Pincode:</span>
+        </div>
+        <span id="view_pincode" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+  
+  
+      </div>
+
+
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px; background: none;
+    border: none;">Aadhar No:</span>
+        </div>
+        <span id="view_kycid" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+  
+  
+      </div>
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px;">New Aadhar No:</span>
+        </div>
+        <input type="text" class="form-control" id="colFormLabel" placeholder="Enter  New Aadhar Card Number">
+  
+  
+      </div>
+
+
+
+
+
+
+
+      
+
+
+
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px; background: none;
+    border: none;">Phone no:</span>
+        </div>
+        <span id="view_contact" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+  
+  
+      </div>
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px;">New Phone no:</span>
+        </div>
+        <input type="phone" class="form-control" id="colFormLabel" placeholder="Enter  New Contact Number">
+  
+  
+      </div>
+
+
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px; background: none;
+    border: none;">Survey No:</span>
+        </div>
+        <span id="view_surveyno" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+  
+  
+      </div>
+
+
+
+      <div class="row mb-3">
+        <label for="colFormLabel" class="col-sm-2 col-form-label">Current Aadhar ID:</label>
+        <div class="col-sm-10 padding-align">
+          <p id="view_aadharno">2132131XXXXXX</p>
+
+          <p>
+            <button class="btn btn-primary linear-bg-btn" id="new_member_aadhar" type="button" data-toggle="collapse"
+              data-target="#new_aadhar" aria-expanded="false" aria-controls="new_aadhar">
+              ADD
+            </button>
+          </p>
+
+        </div>
+      </div>
+
+
+      <div class="collapse" id="new_aadhar">
+        <div class="card card-body">
+          <div class="row mb-3">
+            <label for="colFormLabel" class="col-sm-2 col-form-label">New Aadhar ID:</label>
+            <div class="col-sm-10 padding-align">
+              <input type="text" class="form-control" id="colFormLabel" placeholder="Enter Aadhar Card Number">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+      <div class="row mb-3">
+        <label for="colFormLabel" class="col-sm-2 col-form-label">Current Owner Name:</label>
+        <div class="col-sm-10 padding-align">
+          <p id="view_ownername">Tanuj Pagal</p>
+
+          <p>
+            <button class="btn btn-primary linear-bg-btn" id="new_member" type="button" data-toggle="collapse"
+              data-target="#new_owner" aria-expanded="false" aria-controls="new_owner">
+              ADD
+            </button>
+          </p>
+
+        </div>
+      </div>
+
+
+
+
+
+
+
+      <div class="collapse" id="new_owner">
+        <div class="card card-body">
+          <div class="row md-3">
+            <label for="colFormLabel" class="col-sm-2 col-form-label">New Owner Name:</label>
+            <div class="col-sm-10 padding-align">
+              <input type="text" class="form-control" id="colFormLabel" placeholder="Enter New Owner Name">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="row mb-3">
+        <label for="colFormLabel" class="col-sm-2 col-form-label">Current Contact Number:</label>
+        <div class="col-sm-10 padding-align">
+          <p id="view_phoneno">1151511XXXX</p>
+
+          <p>
+            <button class="btn btn-primary linear-bg-btn" id="new_member_phone" type="button" data-toggle="collapse"
+              data-target="#new_phone" aria-expanded="false" aria-controls="new_phone">
+              ADD
+            </button>
+          </p>
+
+        </div>
+      </div>
+
+
+      <div class="collapse" id="new_phone">
+        <div class="card card-body">
+          <div class="row mb-3">
+            <label for="colFormLabel" class="col-sm-2 col-form-label">New Contact Number:</label>
+            <div class="col-sm-10 padding-align">
+              <input type="phone" class="form-control" id="colFormLabel" placeholder="Enter New Contact Number">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+      <div class="row mb-3">
+        <label for="colFormLabel" class="col-sm-2 col-form-label">D.O.B:</label>
+        <div class="col-sm-10 padding-align">
+          <p id="view_dob">DD-MM-YYYY</p>
+
+
+          <p>
+            <button class="btn btn-primary linear-bg-btn" id="new_member_dob" type="button" data-toggle="collapse"
+              data-target="#new_dob" aria-expanded="false" aria-controls="new_dob">
+              ADD
+            </button>
+          </p>
+        </div>
+      </div>
+
+
+      <div class="collapse" id="new_dob">
+        <div class="card card-body">
+          <div class="row mb-3">
+            <label for="colFormLabel" class="col-sm-2 col-form-label">New Owner D.O.B:</label>
+            <div class="col-sm-10 padding-align">
+              <input type="date" class="form-control" id="colFormLabel" placeholder="DD-MM-YYYY">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+      <div class="row mb-3">
+        <label for="colFormLabel" class="col-sm-2 col-form-label">Geolocation Data:</label>
+        <div class="col-sm-10 padding-align">
+          <input type="text" class="form-control" id="view_geodata_1" placeholder="Co-ordinate 1">
+          <br>
+          <input type="text" class="form-control" id="view_geodata_2" placeholder="Co-ordinate 2">
+          <br>
+          <input type="text" class="form-control" id="view_geodata_3" placeholder="Co-ordinate 3">
+          <br>
+          <input type="text" class="form-control" id="view_geodata_4" placeholder="Co-ordinate 4">
+        </div>
+      </div>
+
+
+      <div class="row mb-3">
+        <label for="colFormLabel" class="col-sm-2 col-form-label">Pincode:</label>
+        <div class="col-sm-10">
+          <p id="view_pincode">4XXXX</p>
+        </div>
+      </div>
+
+
+
+
+
+      <div class="row mb-3">
+        <label for="colFormLabel" class="col-sm-2 col-form-label"> Old Date of Registry:</label>
+        <div class="col-sm-10 padding-align">
+          <p id="view_registration">DD-MM-YYYY</p>
+
+          <p>
+            <button class="btn btn-primary linear-bg-btn" id="new_member_registration" type="button"
+              data-toggle="collapse" data-target="#new_registration" aria-expanded="false"
+              aria-controls="new_registration">
+              ADD
+            </button>
+          </p>
+        </div>
+      </div>
+
+      <div class="collapse" id="new_registration">
+        <div class="card card-body">
+          <div class="row mb-3">
+            <label for="colFormLabel" class="col-sm-2 col-form-label">New Date of Registry:</label>
+            <div class="col-sm-10 padding-align">
+              <input type="date" class="form-control" id="colFormLabel" placeholder="DD-MM-YYYY">
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+
+
+
+
+
+      <div class="row mb-3">
+        <label for="colFormLabel" class="col-sm-2 col-form-label">Old Purchase Amount:</label>
+        <div class="col-sm-10 padding-align">
+          <p id="view_amount">RS.100000000.00</p>
+
+
+          <p>
+            <button class="btn btn-primary linear-bg-btn" id="new_member_amount" type="button" data-toggle="collapse"
+              data-target="#new_amount" aria-expanded="false" aria-controls="new_amount">
+              ADD
+            </button>
+          </p>
+        </div>
+      </div>
+
+      <div class="collapse" id="new_amount">
+        <div class="card card-body">
+          <div class="row mb-3">
+            <label for="colFormLabel" class="col-sm-2 col-form-label"> New Purchase Amount:</label>
+            <div class="col-sm-10 padding-align">
+              <input type="number" class="form-control" id="colFormLabel" placeholder="Enter Purchase Amount">
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-primary me-md-2 linear-bg-btn" type="button">Submit</button>
+
+      </div>
+
+
+
+    </form>
+
+  </div>
+
+
+
+  
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+  <footer id="footer" style="margin-top: 66vh;">
+
+
+    <p>Copyright © 2022 All Right Reserved by LRS</p>
+  </footer>
+
+  
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+  <script src="./js/script.js"></script>
+  <script src="./js/clock.js"></script>
+
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+
+      <!-- Blockchain Code -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js'></script>
+  <script type="text/javascript" src="abiPublic.js"></script>
+<script type="text/javascript" src="abiPrivate.js"></script>
+<script type="text/javascript" src="contractAddress.js"></script>
+  <script type="text/javascript">
+
+function addcordinates() {
+  var geo1 = document.getElementById("view_geodata_1").innerText;
+  // console.log(geo_input1);
+  var geo2 = document.getElementById("view_geodata_2").innerText;
+  var geo3 = document.getElementById("view_geodata_3").innerText;
+  var geo4 = document.getElementById("view_geodata_4").innerText;
+  var total = geo1.concat(":", geo2, ":", geo3, ":", geo4);
+  console.log(total);
+  var base64 = btoa(total);
+
+  // console.log("Successfuly generated");
+
+  console.log(base64);
+  return base64;
+}
+
+
+    async function getCurrentAccount() {
+      const accounts = await window.web3.eth.getAccounts();
+      return accounts[0]; r
+    }
+
+    function decodecordinates(enodedgeo) {
+      var encode = enodedgeo;
+      var decode = atob(encode)
+      var locations = decode.split(':');
+
+      var geo1 = locations[0];
+      console.log(geo1);
+      const geotag1 = document.getElementById('view_geodata_1');
+      geotag1.innerHTML = geo1;
+
+      var geo2 = locations[1];
+      const geotag2 = document.getElementById('view_geodata_2');
+      geotag2.innerHTML = geo2;
+      console.log(geo2);
+      console.log(geotag2);
+
+      var geo3 = locations[2];
+      const geotag3 = document.getElementById('view_geodata_3');
+      geotag3.innerHTML = geo3;
+
+      var geo4 = locations[3];
+      const geotag4 = document.getElementById('view_geodata_4');
+      geotag4.innerHTML = geo4;
+    }
+
+
+
+
+
+
+
+    async function showOwner() {
+
+      singleTransfer(); 
+
+      
+      var rlandid = plotid;
+      const plotidold = document.getElementById('view_plotid');
+      plotidold.innerHTML = rlandid;    
+
+      updateStatus('fetching Land Data...');
+      console.log(rlandid);
+
+
+      var getOwner = await window.privatecontract.methods.getOwner(rlandid).call();
+      const owner = document.getElementById('view_ownername');
+      owner.innerHTML = getOwner;
+      console.log(owner);
+
+
+
+
+      var getLandtype = await window.privatecontract.methods.getLandtype(rlandid).call();
+      const land = document.getElementById('view_landtype');
+      land.innerHTML = getLandtype;
+      console.log(land);
+
+
+
+
+      var getGeolocation = await window.privatecontract.methods.getGeolocation(rlandid).call();
+      decodecordinates(getGeolocation);
+
+
+
+      var getAmount = await window.privatecontract.methods.getAmount(rlandid).call();
+      const amounts = document.getElementById('view_amount');
+      amounts.innerHTML = getAmount;
+      console.log(amounts);
+
+
+      var getRegdate = await window.privatecontract.methods.getRegdate(rlandid).call();
+      const regdate = document.getElementById('view_registration');
+      regdate.innerHTML = getRegdate;
+      console.log(regdate);
+
+      var getPincode = await window.privatecontract.methods.getPincode(rlandid).call();
+      const pincode = document.getElementById('view_pincode');
+      pincode.innerHTML = getPincode;
+      console.log(pincode);
+
+      var getKyc = await window.privatecontract.methods.getKyc(rlandid).call();
+      const aadharno = document.getElementById('view_kycid');
+      aadharno.innerHTML = getKyc;
+      console.log(aadharno);
+
+      var getContact = await window.privatecontract.methods.getContact(rlandid).call();
+      const contact = document.getElementById('view_contact');
+      contact.innerHTML = getContact;
+      console.log(contact);     
+
+
+
+
+      var getSurveyno = await window.privatecontract.methods.getSurveyno(rlandid).call();
+      const surveyno = document.getElementById('view_surveyno');
+      surveyno.innerHTML = getSurveyno;
+      console.log(surveyno);
+
+      // var getPincodelandids = await window.privatecontract.methods.getPincodelandids(rlandid).call();
+      // const pincode = document.getElementById('view_pincode');
+      // pincode.innerHTML = getPincodelandids;
+      // console.log(pincode);
+
+
+      // var getKyclandids = await window.privatecontract.methods.getKyclandids(rlandid).call();
+      // const aadharno = document.getElementById('view_kycid');
+      // aadharno.innerHTML = getKyclandids;
+      // console.log(aadharno);
+
+
+      // var getSurveylandids = await window.privatecontract.methods.getSurveylandids(rlandid).call();
+      // const surveyno = document.getElementById('view_surveyno');
+      // surveyno.innerHTML = getSurveylandids;
+      // console.log(surveyno);
+
+
+
+
+
+
+
+      // var getDob = await window.privatecontract.methods.getDob(rlandid).call();
+      // const dob = document.getElementById('view_dob');
+      // dob.innerHTML = getDob;
+      // console.log(dob);
+
+      updateStatus(`landid: ${rlandid}\n${getOwner}`);
+
+
+
+    }
+
+    function singleTransfer() {
+      document.getElementById("multipletransfer").style.display = "none";
+      document.getElementById("singletransfer").style.display = "block";
+      document.getElementById("footer").style.marginTop = "0";
+
+    }
+    function multipleTransfer() {
+      document.getElementById("singletransfer").style.display = "none";
+      document.getElementById("multipletransfer").style.display = "block";
+      document.getElementById("footer").style.marginTop = "0";
+
+    }
+
+
+
+//     function redirect(address)
+// {
+// window.location.href=`/${address}.html`;
+// }
+
+
+
+
+
+
+
+
+
+async function AddLandData() {
+  // var x = document.getElementById("frm1");
+  var landid = document.getElementById("view_plotid").innerText; 
+  console.log(landid);
+  
+  var ownername = document.getElementById("newowner_input").value;
+  var landtype = document.getElementById("new_landtype").value;
+  console.log(landtype);
+
+  var geo = addcordinates();
+  // var geo = getGeolocation;
+  console.log(geo);
+  var amount = document.getElementById("newpurchase_amount").value;
+  console.log(amount);
+  var regdate = document.getElementById("new_registration").value;
+  console.log(regdate);
+  var pincode = document.getElementById("view_pincode").innerText;
+  console.log(pincode);
+
+  var kycid = document.getElementById("new_kycid").value;
+  console.log(kycid);
+  var contact = document.getElementById("new_contactno").value;
+  console.log(contact);
+  var surveyno = document.getElementById("view_surveyno").innerText;
+  console.log(surveyno);
+  
+  
+  // var dob = x.elements[12].value;
+  console.log(geo);
+  updateStatus(`Updating Land ID with ${landid}\nUpdating Owner Name with ${ownername}`);
+
+  //Load metamask if no record exists
+  const account = await getCurrentAccount();
+
+  const addPrivateLand = await window.privatecontract.methods.addLand(landid, ownername, landtype, geo, amount, regdate, pincode, kycid, contact, surveyno).send({ from: account });
+  const addPublicLand = await window.publicontract.methods.addLand(landid, ownername, landtype, geo, amount, regdate, pincode).send({ from: account });
+  updateStatus('Updated.');
+  // redirect('index');
+
+
+}
+
+
+
+
+
+async function loadPrivateContract() {
+  return await new window.web3.eth.Contract(abiPrivate,PrivateAddress);
+}
+
+async function loadPublicContract(){
+  return await new window.web3.eth.Contract(abiPublic,PublicAddress);
+}
+
+
+    async function loadWeb3() {
+      if (window.ethereum) {
+        window.web3 = new Web3(window.ethereum);
+        window.ethereum.enable();
+      }
+    }
+
+    async function load() {
+      await loadWeb3();
+      window.privatecontract = await loadPrivateContract();
+      window.publicontract = await loadPublicContract();
+
+
+      //function starting
+      // showOwner();
+      updateStatus('Ready!');
+    }
+
+
+    function updateStatus(status) {
+      // const statusEl = document.getElementById('status');
+      // statusEl.innerHTML = status;
+      console.log(status);
+    }
+
+
+    load();
+
+
+  </script>
+
+
+</body>
+
+</html>

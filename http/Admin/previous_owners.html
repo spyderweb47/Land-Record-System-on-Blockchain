@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/7507e36a2a.js" crossorigin="anonymous"></script>
+  <!-- <link rel="stylesheet" href="./css/search.css" /> -->
+  <link rel="stylesheet" href="./css/footer.css" />
+  <link rel="stylesheet" href="./css/table.css" />
+  <link rel="stylesheet" href="./css/side-menu.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <title>Search Result</title>
+
+  <style>
+    body{
+      background-color: #efefef;
+    }
+    #map {
+      height: 100%;
+      width: 100%;
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'PT Serif', serif;
+    }
+
+    .main {
+      margin-left: 350px;
+      padding: 12px;
+      height: 106vh;
+      margin-right: 6px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+    }
+
+    .main-1 {
+
+      margin-bottom: 40px;
+      border-radius: 6px;
+      padding: 44px;
+      box-shadow: 0 1px 8px rgb(0 0 0);
+      display: none;
+      margin-left: 89px;
+      margin-right: 10px;
+      background-color: #ffffff;
+
+    }
+
+    .main-1 .ownerdetail_container {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .main-2 {
+      /* margin-left: 350px; */
+      padding: 0;
+      margin: 0;
+      /* height: 77vh; */
+      /* margin-right: 6px; */
+      /* border-radius: 15px; */
+      /* margin-bottom: 10px; */
+
+    }
+
+
+
+    .map-container-2 {
+      overflow: hidden;
+      padding-bottom: 56.25%;
+      position: relative;
+      height: 0;
+    }
+
+    .map-container-2 iframe {
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+    }
+
+    .form-control {
+      /* width: 70%; */
+    }
+
+    .form-select {
+
+      margin-bottom: 16px;
+      /* width: 70%; */
+    }
+
+    .navbar {
+      margin-bottom: 9px;
+    }
+
+    .col-sm-10 p {
+      margin-top: 7px;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      margin-left: 77px;
+      color: #ffffff;
+    }
+
+    .nav-link {
+      font-weight: 500;
+    }
+
+    .btn-group {
+      padding: 10px;
+    }
+
+    .btn-left {
+      margin-left: 16px;
+      margin-right: 16px;
+      margin-top: 0;
+      margin-bottom: 0;
+      height: 32px;
+      border-radius: 20px;
+      font-size: 11px;
+
+    }
+
+    .modal-footer {
+      padding: 5px;
+    }
+
+    .btn-w-h {
+      height: 36px;
+      width: 82px;
+      height: 32px;
+      border-radius: 20px;
+      font-size: 11px;
+    }
+
+    .modal-body-kyc {
+      padding-top: 0;
+    }
+
+    .modal-body-plot {
+      padding-top: 0;
+    }
+
+
+
+    .modal-linear-bg-btn {
+      width: 200px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      cursor: pointer;
+
+      height: 42px;
+      text-align: center;
+      border: none;
+      background-size: 300% 100%;
+
+      border-radius: 50px;
+      moz-transition: all .4s ease-in-out;
+      -o-transition: all .4s ease-in-out;
+      -webkit-transition: all .4s ease-in-out;
+      transition: all .4s ease-in-out;
+    }
+
+    .modal-linear-bg-btn:hover {
+      background-position: 100% 0;
+      moz-transition: all .4s ease-in-out;
+      -o-transition: all .4s ease-in-out;
+      -webkit-transition: all .4s ease-in-out;
+      transition: all .4s ease-in-out;
+    }
+
+    .modal-linear-bg-btn:focus {
+      outline: none;
+    }
+
+    .modal-linear-bg-btn {
+      /* background: linear-gradient(-135deg, #c850c0, #4158d0);
+      border: linear-gradient(-135deg, #c850c0, #4158d0); */
+      box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
+      background-image: linear-gradient(to right, #667eea, #003a55, #6B8DD6, #003a55);
+
+    }
+
+    .search_option {
+      /* margin: auto;
+        
+        width: 75%;
+        border: 1px solid black;
+        border-radius: 15px;
+        padding: 44px; */
+      margin-bottom: 40px;
+      margin-top: 20px;
+      margin-left: auto;
+      margin-right: auto;
+      /* margin-left: 85px; */
+      width: 44%;
+      /* border: 3px solid black; */
+      border-radius: 15px;
+      padding: 40px 50px 20px 50px;
+      box-shadow: 0 1px 8px rgb(0 0 0);
+      background-color: #ffffff;
+    }
+
+    #pop_owner_details {
+      /* display: none; */
+      visibility: hidden;
+      position: absolute;
+      bottom: 0;
+      width: 30%;
+      height: 175px;
+      border-radius: 15px;
+      box-shadow: 0 3px 6px rgb(0 0 0);
+      background-color: white;
+      margin-left: 332px;
+      padding: 15px;
+
+
+    }
+
+    .input-group>.input-group-prepend>.input-group-text {
+      width: 148px;
+    }
+
+    .navbar-expand-lg .navbar-nav .nav-link {
+        color: #ffffff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- <nav class="navbar navbar-expand-lg"
+        style="background: linear-gradient(120deg, #ff6600, #f2f2f2, #009933); box-shadow: 0 8px 8px -4px lightblue;"> -->
+  <nav class="navbar navbar-expand-lg"
+  style="background: #003a55;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/index.html">LRS</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/index.html">Home</a>
+          </li>
+
+
+        </ul>
+
+      </div>
+    </div>
+
+  </nav>
+  <div class="sidebar">
+    <div class="logo-details">
+        <div class="logo_name">LRS</div>
+        <i class='bx bx-menu' id="btn"></i>
+    </div>
+    <ul class="nav-list p-f">
+        <li>
+            <a href="/view_property.html">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <span class="links_name">SEARCH RECORDS</span>
+            </a>
+            <span class="tooltip">SEARCH RECORDS</span>
+          </li>
+        <li>
+            <a href="/add_new_property.html">
+
+                <i class="fa-solid fa-plus"></i>
+                <span class="links_name">ADD RECORD</span>
+            </a>
+            <span class="tooltip">ADD RECORD</span>
+        </li>
+        <li>
+            <a href="/edit_existing_property.html">
+                <i class="fa-solid fa-file-pen"></i>
+                <span class="links_name">EDIT EXISTING</span>
+            </a>
+            <span class="tooltip">EDIT EXISTING RECORD</span>
+        </li>
+        <li>
+            <a href="/previous_owners.html">
+              <!-- <i class='bx bx-grid-alt'></i> -->
+              <i class="fa-solid fa-rotate-left"></i>
+              <span class="links_name">PREVIOUS OWNERS</span>
+            </a>
+            <span class="tooltip">SEARCH PREVIOUS OWNERS</span>
+          </li>
+        <li>
+            <a href="/user.html">
+                <i class='bx bx-user'></i>
+                <span class="links_name">Users</span>
+            </a>
+            <span class="tooltip">Users</span>
+        </li>
+        <li>
+          <a href="http://127.0.0.1:8000/">
+            <!-- <i class='bx bx-grid-alt'></i> -->
+            <i class="fa-solid fa-database"></i>
+            <span class="links_name">Upload Data</span>
+          </a>
+          <span class="tooltip">UPLOAD PREVIOUS OWNERS DATA</span>
+        </li>
+      
+        <!-- <li>
+            <a href="#">
+                <i class='bx bx-cog'></i>
+                <span class="links_name">Setting</span>
+            </a>
+            <span class="tooltip">Setting</span>
+        </li> -->
+        <li class="profile">
+            <div class="profile-details">
+                <img src="./img/face-1.png" alt="profileImg">
+                <div class="name_job">
+                    <div class="name">Suraj</div>
+                    <div class="job">ADMIN</div>
+                </div>
+            </div>
+            <a href="/admin_login.html">
+                <i class='bx bx-log-out' href="/admin_login.html" id="log_out" style="color: #ffffff;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+  <div class=" search_option">
+    <h4 class="text-center" style="margin-bottom: 40px;     font-size: 18px;">Search Your Land Details Below</h4>
+    <div class="form-row">
+      <div class="col">
+        <input type="text" id="search_input" class="form-control text-center" placeholder="Enter Your Plot ID Here"
+          style="   width: 100%; margin-bottom: 20px; height: 40px; font-size: 13px;">
+      </div>
+
+      <button type="submit" onclick="plotid = document.getElementById('search_input').value; showPreviousOwner(plotid);"
+        id="plotid_search" class=" btn btn-primary btn-sm btn-w-h modal-linear-bg-btn"
+        style="width: 165px; margin: 0; font-size: 12px;">Show Previous Owners</button>
+      <!-- <div class="col">
+          <input type="text" class="form-control" placeholder="Last name">
+        </div> -->
+
+    </div>
+  </div>
+
+
+
+
+
+
+  <div class="main-1" id="main-1">
+    <h3 class="text-center">PREVIOUS OWNER DETAILS</h3>
+    <br>
+
+    <div class="ownerdetails">
+
+      <section id="table-section">
+
+        <td>
+          <!--Nested Table-->
+          <table class="list" id="viewprevious_owners" style="background-color: #C2976D;">
+            <h4 class="text-center" style="font-size: 17px;">Plot Id: <p id="view_plotid"
+                style="display: inline; font-size: 17px;"></p>
+            </h4>
+            <!--Table Head-->
+            <thead>
+              <!--Row-2-->
+              <tr>
+                <!-- <th>Plot ID</th> -->
+                <th>Owner Name</th>
+                <th>Registration Date</th>
+
+              </tr>
+            </thead>
+            <!--Table Body-->
+            <tbody>
+              <!-- <tr id="myTablerow"></tr> -->
+            </tbody>
+          </table>
+        </td>
+      </section>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+  <!-- ********************************Clock Start*************************** -->
+
+  <footer id="footer" style="margin-top: 56vh;">
+
+
+
+    <p>Copyright © 2022 All Right Reserved by LRS</p>
+  </footer>
+
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+
+  <script src="./js/script.js"></script>
+
+  <script src="./js/clock.js"></script>
+  <script src="./js/table.js"></script>
+
+
+  <!-- Blockchain Code -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js'></script>
+<script type="text/javascript" src="abiPublic.js"></script>
+<script type="text/javascript" src="abiPrivate.js"></script>
+<script type="text/javascript" src="contractAddress.js"></script>
+
+  <script type="text/javascript">
+    async function showPreviousOwner(rlandid) {
+      document.getElementById("main-1").style.display = "block";
+      document.getElementById("footer").style.marginTop = "13vh";
+      updateStatus('Previous land function');
+      console.log(rlandid);
+      var getOwners = await window.privatecontract.methods.TrackLand(rlandid).call();
+
+      // const owner = document.getElementById('ownername_output');
+      // owner.innerHTML = getOwners;
+      // console.log(getOwners);
+      var newSplitgetOwners = getOwners.slice(1);
+
+      var Owners = newSplitgetOwners.split(',');
+      console.log(Owners);
+      const previousOwners = [];
+      splitDetails();
+      function splitDetails() {
+        for (let i = 0; i < Owners.length; i++) {
+          previousOwners.push(Owners[i].split(":"));
+
+        }
+
+      }
+      console.log(previousOwners);
+
+      updateStatus(`landid: ${rlandid}`);
+
+      document.getElementById("view_plotid").innerText = plotid;
+
+      $("#viewprevious_owners tbody tr").remove();
+      // document.getElementsByTagName("tr").remove();
+
+      var items = [];
+      items = previousOwners;
+      var table = $('#viewprevious_owners');
+      var row, cell;
+
+
+
+      for (var i = 0; i < items.length; i++) {
+        row = $('<tr />');
+        table.append(row);
+        for (var j = 0; j < items[i].length; j++) {
+
+          cell = $('<td>' + items[i][j] + '</td>')
+          row.append(cell);
+        }
+      }
+
+
+
+
+
+      // let list = document.getElementById("viewprevious_owners");
+
+      // previousOwners.forEach((item) => {
+      //   let li = document.createElement("li");
+      //   li.innerText = item;
+      //   list.appendChild(li);
+      // });
+
+    }
+
+
+
+
+async function loadPrivateContract() {
+  return await new window.web3.eth.Contract(abiPrivate,PrivateAddress);
+}
+
+async function loadPublicContract(){
+  return await new window.web3.eth.Contract(abiPublic,PublicAddress);
+}
+
+
+    async function loadWeb3() {
+      if (window.ethereum) {
+        window.web3 = new Web3(window.ethereum);
+        window.ethereum.enable();
+      }
+    }
+
+    async function load() {
+      await loadWeb3();
+      window.privatecontract = await loadPrivateContract();
+      window.publicontract = await loadPublicContract();
+
+
+      //function starting
+      // showOwner();
+      updateStatus('Ready!');
+    }
+
+
+    function updateStatus(status) {
+      // const statusEl = document.getElementById('status');
+      // statusEl.innerHTML = status;
+      console.log(status);
+    }
+
+
+    load();
+
+  </script>
+
+
+
+
+</body>
+
+</html>

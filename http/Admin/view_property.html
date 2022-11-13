@@ -1,0 +1,1068 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/7507e36a2a.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./css/side-menu.css">
+  <link rel="stylesheet" href="./css/footer.css" />
+  <link rel="stylesheet" href="./css/table.css" />
+
+  <title>admin Panel</title>
+  <style>
+
+    body{
+      background-color: #efefef;    }
+    .search_container {
+      /* display: none; */
+      /* margin: auto;
+        
+        width: 75%;
+        border: 1px solid black;
+        border-radius: 15px;
+        padding: 44px; */
+      margin: auto;
+      margin-bottom: 40px;
+      margin-left: 300px;
+
+
+      width: 60%;
+      /* border: 3px solid black; */
+      border-radius: 15px;
+      padding: 44px;
+      padding-left: 70px;
+      padding-right: 70px;
+      box-shadow: 0 14px 20px rgba(0, 0, 0, 1);
+      /* visibility: hidden; */
+      background-color: #ffffff;
+
+    }
+
+    .search_container2 {
+
+      /* display: none; */
+      /* margin: auto; */
+      margin-bottom: 40px;
+      /* margin-left: 300px; */
+      width: 95%;
+      /* border: 3px solid black; */
+      border-radius: 15px;
+      padding: 44px;
+      /* padding-left: 70px; */
+      /* padding-right: 70px; */
+      box-shadow: 0 1px 8px rgb(0 0 0);
+      background-color: #ffffff;
+    }
+
+    #search_container {
+      display: none;
+    }
+
+    .search_option {
+      /* margin: auto;
+        
+        width: 75%;
+        border: 1px solid black;
+        border-radius: 15px;
+        padding: 44px; */
+      /* margin-bottom: 40px;
+      margin-top: 20px;
+      margin-left: auto;
+      margin-right: auto; */
+      /* margin-left: 85px; */
+      width: 100%;
+      height: 36vh;
+      /* border: 3px solid black; */
+      border-radius: 15px;
+      padding: 40px 50px 20px 50px;
+      box-shadow: 0 1px 8px rgb(0 0 0);
+      background-color: #ffffff;
+      /* box-shadow: 0 5px 16px rgb(0 0 0); */
+    }
+
+
+
+    .main {
+      margin-left: 87px;
+      padding: 12px;
+      height: 90vh;
+      margin-right: 0;
+      margin-bottom: 10px;
+      border-radius: 10px;
+    }
+
+    .map_container {
+
+      padding: 12px;
+      height: 45vh;
+      margin-right: 0;
+      margin-bottom: 10px;
+      border-radius: 10px;
+    }
+
+    .search-main {
+      margin-left: 87px;
+      padding: 12px;
+      height: 45vh;
+      margin-right: 0;
+      margin-bottom: 10px;
+      border-radius: 10px;
+    }
+
+
+
+
+
+    .form-control {
+      /* width: 70%; */
+    }
+
+    .form-select {
+
+      margin-bottom: 16px;
+      /* width: 70%; */
+    }
+
+    .navbar {
+      margin-bottom: 9px;
+    }
+
+    .col-sm-10 p {
+      margin-top: 7px;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      margin-left: 77px;
+      color: #ffffff;
+    }
+
+    .nav-link {
+      font-weight: 500;
+    }
+
+    .btn-group {
+      padding: 10px;
+    }
+
+    .btn-left {
+      margin-left: 16px;
+      margin-right: 16px;
+      margin-top: 0;
+      margin-bottom: 0;
+      height: 32px;
+      border-radius: 20px;
+      font-size: 11px;
+
+    }
+
+    .modal-footer {
+      padding: 5px;
+    }
+
+    .btn-w-h {
+      height: 36px;
+      width: 82px;
+      height: 32px;
+      border-radius: 20px;
+      font-size: 11px;
+    }
+
+    .modal-body-kyc {
+      padding-top: 0;
+    }
+
+    .modal-body-plot {
+      padding-top: 0;
+    }
+
+    .modal-linear-bg-btn {
+      width: 110px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      cursor: pointer;
+      margin: 8px;
+      height: 42px;
+      text-align: center;
+      border: none;
+      background-size: 300% 100%;
+
+      border-radius: 50px;
+      moz-transition: all .4s ease-in-out;
+      -o-transition: all .4s ease-in-out;
+      -webkit-transition: all .4s ease-in-out;
+      transition: all .4s ease-in-out;
+    }
+
+    .modal-linear-bg-btn:hover {
+      background-position: 100% 0;
+      moz-transition: all .4s ease-in-out;
+      -o-transition: all .4s ease-in-out;
+      -webkit-transition: all .4s ease-in-out;
+      transition: all .4s ease-in-out;
+    }
+
+    .modal-linear-bg-btn:focus {
+      outline: none;
+    }
+
+    .modal-linear-bg-btn {
+      /* background: linear-gradient(-135deg, #c850c0, #4158d0);
+      border: linear-gradient(-135deg, #c850c0, #4158d0); */
+      /* box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75); */
+      background-image: linear-gradient(to right, #667eea, #003a55, #6B8DD6, #003a55);;
+      /* background: #256D85; */
+      
+
+    }
+
+    #land_list {
+      list-style-type: none;
+      padding: 0;
+      border: 1px solid #ddd;
+    }
+
+    #land_list li {
+      padding: 8px 16px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    #land_list li:last-child {
+      border-bottom: none;
+    }
+
+    .navbar-expand-lg .navbar-nav .nav-link {
+        color: #ffffff;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <nav class="navbar navbar-expand-lg"
+        style="background: linear-gradient(120deg, #ff6600, #f2f2f2, #009933); box-shadow: 0 8px 8px -4px lightblue;"> -->
+  <nav class="navbar navbar-expand-lg"
+    style="background: #003a55;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/index.html">LRS</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/index.html">Home</a>
+          </li>
+
+
+        </ul>
+
+      </div>
+    </div>
+
+  </nav>
+
+  <div class="sidebar">
+    <div class="logo-details">
+        <div class="logo_name">LRS</div>
+        <i class='bx bx-menu' id="btn"></i>
+    </div>
+    <ul class="nav-list p-f">
+        <li>
+            <a href="/view_property.html">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <span class="links_name">SEARCH RECORDS</span>
+            </a>
+            <span class="tooltip">SEARCH RECORDS</span>
+          </li>
+        <li>
+            <a href="/add_new_property.html">
+
+                <i class="fa-solid fa-plus"></i>
+                <span class="links_name">ADD RECORD</span>
+            </a>
+            <span class="tooltip">ADD RECORD</span>
+        </li>
+        <li>
+            <a href="/edit_existing_property.html">
+                <i class="fa-solid fa-file-pen"></i>
+                <span class="links_name">EDIT EXISTING</span>
+            </a>
+            <span class="tooltip">EDIT EXISTING RECORD</span>
+        </li>
+        <li>
+            <a href="/previous_owners.html">
+              <!-- <i class='bx bx-grid-alt'></i> -->
+              <i class="fa-solid fa-rotate-left"></i>
+              <span class="links_name">PREVIOUS OWNERS</span>
+            </a>
+            <span class="tooltip">SEARCH PREVIOUS OWNERS</span>
+          </li>
+        <li>
+            <a href="/user.html">
+                <i class='bx bx-user'></i>
+                <span class="links_name">Users</span>
+            </a>
+            <span class="tooltip">Users</span>
+        </li>
+        <li>
+          <a href="http://127.0.0.1:8000/">
+            <!-- <i class='bx bx-grid-alt'></i> -->
+            <i class="fa-solid fa-database"></i>
+            <span class="links_name">Upload Data</span>
+          </a>
+          <span class="tooltip">UPLOAD PREVIOUS OWNERS DATA</span>
+        </li>
+      
+        <!-- <li>
+            <a href="#">
+                <i class='bx bx-cog'></i>
+                <span class="links_name">Setting</span>
+            </a>
+            <span class="tooltip">Setting</span>
+        </li> -->
+        <li class="profile">
+            <div class="profile-details">
+                <img src="./img/face-1.png" alt="profileImg">
+                <div class="name_job">
+                    <div class="name">Suraj</div>
+                    <div class="job">ADMIN</div>
+                </div>
+            </div>
+            <a href="/admin_login.html">
+                <i class='bx bx-log-out' href="/admin_login.html" id="log_out" style="color: #ffffff;"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+  <!-- Map Container -->
+
+
+  <div class="search-main">
+    <div class="row">
+      <div class="col-sm">
+        <div class="search_container2">
+          <h4 class="text-center" style="margin-bottom: 40px; font-size: 18px;">Search Your Land Details Below</h4>
+          <!-- <form> -->
+          <div class="form-row">
+            <div class="col text-center">
+
+              <input type="text" id="search_input" class="form-control text-center"
+                placeholder="Enter PlotID / Kyc ID / Survey No" style="   width: 100%; margin-bottom: 20px;
+        height: 40px; font-size: 13px;" required>
+
+              <button type="submit" onclick="plotid = document.getElementById('search_input').value; checkPlotid();"
+                id="plotid_search" class=" btn btn-primary btn-sm btn-w-h modal-linear-bg-btn" style="width: 165px; margin: 0; 
+          font-size: 12px;">Search with PLOT ID</button>
+              <button type="submit" onclick="plotid = document.getElementById('search_input').value; checkKycid()"
+                id="kycid_search" class=" btn btn-primary btn-sm btn-w-h modal-linear-bg-btn" style="width: 165px; margin: 0 0 0px 29px;
+             font-size: 12px;">Search with KYC ID</button>
+              <button type="submit"
+                onclick="plotid = document.getElementById('search_input').value; checkSurveyno()"
+                id="surveyno_search" class=" btn btn-primary btn-sm btn-w-h modal-linear-bg-btn" style="width: 165px; margin: 0  0 0px 29px;
+             font-size: 12px;">Search with SURVEY NO</button>
+
+            </div>
+            <!-- </form> -->
+
+
+          </div>
+        </div>
+
+      </div>
+      <div class="col-sm">
+        <div id="map" class="search_option">
+      <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap">
+        </script>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+  <!-- <div class="row">
+      <div class="col-xs-6">
+        
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-6">
+
+       <div class="search_option">
+
+
+    </div>
+    </div>
+    </div> -->
+
+
+
+
+  </div>
+
+  <!-- <h3 class="text-center" style="font-size: 18px;">Click on Plot Id to view details</h3> -->
+
+
+
+
+
+
+  <!-- </div> -->
+
+  <div class="search_container" id="search-main" style="display: none;">
+
+
+
+    <div class="ownerdetails">
+
+      <div class="row md-3" style="margin-left: 12px;">
+        <!-- <label for="colFormLabel" class="col-sm-2 col-form-label">Select Plot ID:</label> -->
+        <div class="col-sm-10 padding-align" style="width: 95.333333%;">
+          <select id="plotlists" class="form-select" onchange="getOption()">
+            <option selected>Select Plot Id to view details</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div id="search_container" class="search_container" style="padding-left: 30px; padding-right: 30px; background-color: #ffffff;">
+    <h2 class="text-center">OWNER DETAILS</h2>
+    <form action="./previous_owners.html">
+
+      <!-- <div class="input-group input-group-sm mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px;">Blockchain ID:</span>
+      </div>
+      <span id="view_blockchain" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm">XYZ</span>
+      
+      
+    </div> -->
+      <!-- <div class="row mb-3">
+      <label for="colFormLabel" class="col-sm-2 col-form-label">Blockchain ID:</label>
+      <div class="col-sm-10">
+        <p id="blockchainid_output">XYZ</p>
+      </div>
+    </div> -->
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px;">Plot ID :</span>
+        </div>
+        <span id="view_plotid" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+      </div>
+
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px;">Owner Name:</span>
+        </div>
+        <span id="view_ownername" class="form-control" aria-label="small"
+          aria-describedby="inputGroup-sizing-sm"></span>
+
+      </div>
+
+
+
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px;">Land Category:</span>
+        </div>
+        <span id="view_landtype" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+
+
+      </div>
+
+
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px;">Geolocation Data:</span>
+        </div>
+        <span id="view_geodata_1" class="form-control" aria-label="small"
+          aria-describedby="inputGroup-sizing-sm"></span>
+      </div>
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm"
+            style="width: 175px; border:none; background:none;"></span>
+        </div>
+        <span id="view_geodata_2" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm" style="
+      height: 38px;
+  "></span>
+
+      </div>
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm"
+            style="width: 175px; border:none; background:none;"></span>
+        </div>
+        <span id="view_geodata_3" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm" style="
+      height: 38px;
+  "></span>
+
+      </div>
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm"
+            style="width: 175px; border:none; background:none;"></span>
+        </div>
+        <span id="view_geodata_4" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm" style="
+      height: 38px;
+  "></span>
+      </div>
+
+
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px;">Purchase Amount:</span>
+        </div>
+        <span id="view_amount" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+      </div>
+
+
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px;">Date of Registry:</span>
+        </div>
+        <span id="view_registration" class="form-control" aria-label="small"
+          aria-describedby="inputGroup-sizing-sm"></span>
+      </div>
+
+
+
+
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px;">Pincode:</span>
+        </div>
+        <span id="view_pincode" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+      </div>
+
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px;">Aadhar No:</span>
+        </div>
+        <span id="view_kycid" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+      </div>
+
+
+
+
+
+
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px;">Phone no:</span>
+        </div>
+        <span id="view_contact" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+      </div>
+
+
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px;">Survey No:</span>
+        </div>
+        <span id="view_surveyno" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"></span>
+      </div>
+
+
+
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <!-- <button class="btn btn-primary me-md-2 modal-linear-bg-btn" id="print_details" type="submit">Print</button> -->
+        <!-- <input class="btn btn-primary me-md-2 modal-linear-bg-btn" type="button" value="Print" onclick="printDiv()"> -->
+        <button type="submit" class=" btn btn-primary btn-sm btn-w-h modal-linear-bg-btn" style="height: 32px;
+        width: 147px; font-size: 12px;">Show Previous Owners</button>
+        <button type="submit" class=" btn btn-primary btn-sm btn-w-h modal-linear-bg-btn" style="height: 32px;
+        width: 147px; font-size: 12px;">Print</button>
+      </div>
+    </form>
+  </div>
+  <br>
+
+
+
+  <footer id="footer" style="margin-top: 49vh;">
+    <p>Copyright © 2022 All Right Reserved by LRS</p>
+  </footer>
+
+
+
+
+  <script src="./js/script.js"></script>
+  <script src="./js/clock.js"></script>
+
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+  <!-- Blockchain Code -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js'></script>
+ <script type="text/javascript" src="contractAddress.js"></script>
+  <script type="text/javascript" src="abiPublic.js"></script>
+  <script type="text/javascript" src="abiPrivate.js"></script>
+  <script type="text/javascript">
+
+
+    // function getParameter() {
+    //   let urlString = window.location.href;
+    //   let paramString = urlString.split('?')[1];
+    //   let queryString = new URLSearchParams(paramString);
+
+    //   for (let pair of queryString.entries()) {
+    //     console.log("Key is:" + pair[0]);
+    //     console.log("Value is:" + pair[1]);
+    //     var paramvalue = pair[1];
+    //   }
+    //   return paramvalue;
+    // }
+
+
+
+
+    let arg = [];
+    let map;
+    let co_ordinates;
+    let map1;
+
+    function split_lat() {
+      const co_ordinate = arguments[0].split(",");
+      return { lat: parseFloat(co_ordinate[0]), lng: parseFloat(co_ordinate[1]) };
+
+    }
+
+    function initiate_co_ordinates() {
+      // Define the LatLng coordinates for the plot's path.
+      var data= new Array();
+      for(let i=0; i<arguments.length ; i++) {
+        data[i] = split_lat(arguments[i]);
+        co_ordinates=[data]
+      }
+
+      // Construct the plot.
+      const plot = new google.maps.Polygon({
+        paths: co_ordinates,
+        strokeColor: "#FF0000",
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: "#FF0000",
+        fillOpacity: 0.35,
+      });
+
+      return plot;
+    }
+
+    //Initialiization function of map
+    function initMap() {
+      map = new google.maps.Map(document.getElementById("map"),     //Getting map in variable
+        {
+          zoom: 12,
+          center: { lat: 18.5204, lng: 73.8567 },
+          mapTypeId: "terrain",
+        });
+
+      //console.log(arg[0]);
+      //initiate_co_ordinates(arg[0], arg[1], arg[2], arg[3]).setMap(map);//Displays the polt on the map
+    }
+
+
+
+    async function getCurrentAccount() {
+      const accounts = await window.web3.eth.getAccounts();
+      return accounts[0]; r
+    }
+
+    function decodecordinates(enodedgeo) {
+      var encode = enodedgeo;
+      var decode = atob(encode)
+      var locations = decode.split(':');
+
+      var geo1 = locations[0];
+      console.log(geo1);
+      const geotag1 = document.getElementById('view_geodata_1');
+      geotag1.innerHTML = geo1;
+
+      var geo2 = locations[1];
+      const geotag2 = document.getElementById('view_geodata_2');
+      geotag2.innerHTML = geo2;
+      // console.log(geo2);
+      console.log(geotag2);
+
+      var geo3 = locations[2];
+      const geotag3 = document.getElementById('view_geodata_3');
+      geotag3.innerHTML = geo3;
+
+      var geo4 = locations[3];
+      const geotag4 = document.getElementById('view_geodata_4');
+      geotag4.innerHTML = geo4;
+
+
+      var geomain = split_lat(geo1);
+      console.log(geo1);
+      console.log(geomain);
+      console.log("here");
+
+      map = new google.maps.Map(document.getElementById("map"),     //Getting map in variable
+        {
+          zoom: 15,
+          center: geomain,
+          mapTypeId: "terrain",
+        });
+      /*map.setCenter(geo1);
+      map.setZoom(15);
+*/
+      initiate_co_ordinates(geo1, geo2, geo3, geo4).setMap(map);
+
+    }
+
+
+    async function checkPlotid() {
+
+
+      var getOwner = await window.privatecontract.methods.getOwner(document.getElementById("search_input").value).call();
+
+
+      if (getOwner.length !== 0) {
+        showOwner();
+        // redirect('add_new_property');
+      }
+      else {
+        alert("Enter Valid Plot ID");
+      }
+
+    }
+
+
+    async function checkKycid() {
+
+      var getKyclandids = await window.privatecontract.methods.getKyclandids(document.getElementById("search_input").value).call();
+
+
+      if (getKyclandids.length !== 0) {
+        showKycdetails();
+        // redirect('add_new_property');
+      }
+      else {
+        alert("Enter Valid Kyc ID");
+      }
+
+    }
+
+    async function checkSurveyno() {
+
+      var getSurveylandids = await window.privatecontract.methods.getSurveylandids(document.getElementById("search_input").value).call();
+
+      if (getSurveylandids.length !== 0) {
+        showSurveynodetails();
+        // redirect('add_new_property');
+      }
+      else {
+        alert("Enter Valid Survey No");
+      }
+
+    }
+
+
+
+
+
+
+
+
+
+    async function showOwner() {
+
+      var rlandid = plotid;
+      const plotidold = document.getElementById('view_plotid');
+      plotidold.innerHTML = rlandid;
+
+
+      updateStatus('fetching Land Data...');
+      console.log(rlandid);
+
+      document.getElementById("search_container").style.display = "block";
+      document.getElementById("footer").style.marginTop = "0";
+      // document.getElementById("search-main").style.display = "none";
+
+      var getOwner = await window.privatecontract.methods.getOwner(rlandid).call();
+      const owner = document.getElementById('view_ownername');
+      owner.innerHTML = getOwner;
+      console.log(owner);
+
+      var getGeolocation = await window.publicontract.methods.getGeolocation(rlandid).call();
+      decodecordinates(getGeolocation);
+
+
+
+      var getLandtype = await window.privatecontract.methods.getLandtype(rlandid).call();
+      const land = document.getElementById('view_landtype');
+      land.innerHTML = getLandtype;
+      console.log(land);
+
+
+
+
+      // var getGeolocation = await window.privatecontract.methods.getGeolocation(rlandid).call();
+      // decodecordinates(getGeolocation);
+
+      // console.log(getGeolocation);
+
+
+
+
+
+
+
+
+      var getAmount = await window.privatecontract.methods.getAmount(rlandid).call();
+      const amounts = document.getElementById('view_amount');
+      amounts.innerHTML = getAmount;
+      console.log(amounts);
+
+
+      var getRegdate = await window.privatecontract.methods.getRegdate(rlandid).call();
+      const regdate = document.getElementById('view_registration');
+      regdate.innerHTML = getRegdate;
+      console.log(regdate);
+
+      var getContact = await window.privatecontract.methods.getContact(rlandid).call();
+      const contact = document.getElementById('view_contact');
+      contact.innerHTML = getContact;
+      console.log(contact);
+
+
+      var getPincode = await window.privatecontract.methods.getPincode(rlandid).call();
+      const pincode = document.getElementById('view_pincode');
+      pincode.innerHTML = getPincode;
+      console.log(pincode);
+
+      var getKyc = await window.privatecontract.methods.getKyc(rlandid).call();
+      const aadharno = document.getElementById('view_kycid');
+      aadharno.innerHTML = getKyc;
+      console.log(aadharno);
+
+
+      var getSurveyno = await window.privatecontract.methods.getSurveyno(rlandid).call();
+      const surveyno = document.getElementById('view_surveyno');
+      surveyno.innerHTML = getSurveyno;
+      console.log(surveyno);
+
+      // var getPincodelandids = await window.privatecontract.methods.getPincodelandids(rlandid).call();
+      // const pincode = document.getElementById('view_pincode');
+      // pincode.innerHTML = getPincodelandids;
+      // console.log(pincode);
+
+
+      // var getDob = await window.privatecontract.methods.getDob(rlandid).call();
+      // const dob = document.getElementById('view_dob');
+      // dob.innerHTML = getDob;
+      // console.log(dob);
+
+      updateStatus(`landid: ${rlandid}\n${getOwner}`);
+    }
+
+
+
+
+    async function showKycdetails() {
+
+      document.getElementById("search-main").style.display = "block";
+      document.getElementById("footer").style.marginTop = "17vh";
+      document.getElementById("search_container").style.display = "none";
+      // document.getElementById("footer").style.marginTop = "34vh";
+
+
+      var rkycid = plotid;
+      var getKyclandids = await window.privatecontract.methods.getKyclandids(rkycid).call();
+      const kycid = document.getElementById('view_landid');
+      console.log(getKyclandids);
+
+      Splitlandids(getKyclandids);
+
+
+      function Splitlandids(getKyclandids) {
+
+        var landids = getKyclandids.split(',');
+        landid = landids.slice(1);
+        console.log(landid);
+      }
+
+
+      
+      
+      
+      var select = document.getElementById("plotlists");
+      
+      console.log(landid);
+      
+      // Main function
+      function landids() {
+        // optionremove();
+        for (var i = 0; i < landid.length; i++) {
+          var optn = landid[i];
+          var el = document.createElement("option");
+          el.textContent = optn;
+          el.value = optn;
+          select.appendChild(el);
+        }
+      }
+      landids();
+
+
+      // function optionremove() {  
+      //       var x = document.getElementById("plotlists");  
+      //       x.remove(x.selectedIndex);  
+      //    }  
+
+
+      // let list = document.getElementById("land_list");
+
+      // landid.forEach((item) => {
+      //   let li = document.createElement("li");
+      //   li.innerText = item;
+      //   list.appendChild(li);
+      // });
+
+    }
+
+    function getOption() {
+      selectElement = document.querySelector('#plotlists');
+      plotid = selectElement.value;
+      showOwner();
+    }
+
+
+
+
+
+
+    async function showSurveynodetails() {
+
+      document.getElementById("search-main").style.display = "block";
+      document.getElementById("footer").style.marginTop = "17vh";
+      document.getElementById("search_container").style.display = "none";
+
+      var rlandid = plotid;
+
+
+      var getSurveylandids = await window.privatecontract.methods.getSurveylandids(rlandid).call();
+      const surveyno = document.getElementById('view_landid');
+      console.log(getSurveylandids);
+
+      Splitlandids(getSurveylandids);
+
+
+      function Splitlandids(getSurveylandids) {
+
+
+        var landids = getSurveylandids.split(',');
+        landid = landids.slice(1);
+        console.log(landid);
+
+      }
+
+      select = document.getElementById("plotlists");
+      // Main function
+      function landids() {
+        for (var i = 0; i < landid.length; i++) {
+          var optn = landid[i];
+          var el = document.createElement("option");
+          el.textContent = optn;
+          el.value = optn;
+          select.appendChild(el);
+        }
+      }
+      landids();
+    }
+
+
+
+ async function loadPrivateContract() {
+  return await new window.web3.eth.Contract(abiPrivate,PrivateAddress);
+}
+
+async function loadPublicContract(){
+  return await new window.web3.eth.Contract(abiPublic,PublicAddress);
+}
+
+
+    async function loadWeb3() {
+      if (window.ethereum) {
+        window.web3 = new Web3(window.ethereum);
+        window.ethereum.enable();
+      }
+    }
+
+    async function load() {
+      await loadWeb3();
+      window.privatecontract = await loadPrivateContract();
+      window.publicontract = await loadPublicContract();
+
+
+      //function starting
+      // showOwner();
+      updateStatus('Ready!');
+    }
+
+
+    function updateStatus(status) {
+      // const statusEl = document.getElementById('status');
+      // statusEl.innerHTML = status;
+      console.log(status);
+    }
+
+    window.initMap = initMap;
+    load();
+
+  </script>
+</body>
+
+</html>

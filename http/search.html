@@ -1,0 +1,941 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Search Result</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/search.css" />
+  <link rel="stylesheet" href="./css/clock.css" />
+  <link rel="stylesheet" href="./css/footer.css" />
+
+
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+  
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+  <style>
+    #map {
+      height: 100%;
+      width: 100%;
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'PT Serif', serif;
+    }
+
+    .main {
+      margin-left: 350px;
+      padding: 12px;
+      height: 106vh;
+      margin-right: 6px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+    }
+
+    .main-1 {
+      display: none;
+      margin-left: 350px;
+      padding: 12px;
+      height: 55vh;
+      margin-right: 6px;
+      border-radius: 15px;
+      margin-bottom: 10px;
+
+    }
+
+    .main-1 .ownerdetail_container {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .main-2 {
+      /* margin-left: 350px; */
+      padding: 0;
+      margin: 0;
+      /* height: 77vh; */
+      /* margin-right: 6px; */
+      /* border-radius: 15px; */
+      /* margin-bottom: 10px; */
+
+    }
+
+
+
+    .map-container-2 {
+      overflow: hidden;
+      padding-bottom: 56.25%;
+      position: relative;
+      height: 0;
+    }
+
+    .map-container-2 iframe {
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+    }
+
+    .modal-linear-bg-btn {
+      width: 200px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      cursor: pointer;
+
+      height: 42px;
+      text-align: center;
+      border: none;
+      background-size: 300% 100%;
+
+      border-radius: 50px;
+      moz-transition: all .4s ease-in-out;
+      -o-transition: all .4s ease-in-out;
+      -webkit-transition: all .4s ease-in-out;
+      transition: all .4s ease-in-out;
+    }
+
+    .modal-linear-bg-btn:hover {
+      background-position: 100% 0;
+      moz-transition: all .4s ease-in-out;
+      -o-transition: all .4s ease-in-out;
+      -webkit-transition: all .4s ease-in-out;
+      transition: all .4s ease-in-out;
+    }
+
+    .modal-linear-bg-btn:focus {
+      outline: none;
+    }
+
+    .modal-linear-bg-btn {
+      /* background: linear-gradient(-135deg, #c850c0, #4158d0);
+      border: linear-gradient(-135deg, #c850c0, #4158d0); */
+      box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
+      background-image: linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7);
+
+    }
+
+    #pop_owner_details {
+      /* display: none; */
+      visibility: hidden;
+      position: absolute;
+      bottom: 0;
+      width: 25%;
+      height: 125px;
+      border-radius: 15px;
+      box-shadow: 0 3px 6px rgb(0 0 0);
+      background-color: white;
+      margin-left: 359px;
+      padding: 15px;
+
+
+    }
+
+    .input-group>.input-group-prepend>.input-group-text {
+      width: 148px;
+    }
+
+    ::-webkit-scrollbar {
+  width: 5px;
+  
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+  margin-top: 10px;
+    margin-bottom: 10px;
+    
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+  </style>
+</head>
+
+<body>
+  <div class="sidebar" id="sidebar">
+    <h2>LRS</h2>
+    <div class="container-login">
+      <div class="title"> Enter Your Land Details</div>
+      <div class="content">
+        <form>
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details"  style="font-size: 13px;">Plot ID:</span>
+              <input type="text" id="plotid_input" placeholder="Enter Your Plot ID" >
+            </div>
+            <div class="button">
+              <input type="button" id="user_search_button" value="Search" onclick="showinfo();" style="font-size: 15px;">
+            </div>
+            <h3 class="text-center" style="font-size: 21px;">OR</h3>
+            <div class="input-box">
+              <span class="details"  style="font-size: 13px;">Pincode:</span>
+              <input type="text" id="pincode_input" placeholder="Enter your Area Pincode">
+            </div>
+          </div>
+          <div class="button">
+            <input type="button" id="user_search_button_zipcode" value="Search" onclick="plotid = document.getElementById('pincode_input').value; initMap();plotZip(plotid);" style="font-size: 15px;">
+          </div>
+          <div class="button">
+            <input type="button" id="user_search_button_zipcode2" value="Get Current Location" onclick="current_location();" style="font-size: 15px;">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <!-- Map Container -->
+
+  <div class="main" style=" border: 4px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(135deg, #6dff62, #71b7e6);">
+
+
+    <div id="map">
+      <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap">
+        </script>
+    </div>
+    <div id="pop_owner_details" class="overflow-auto">
+      <h5 class="text-center" style="font-size: 15px; margin-bottom: 0;">OWNER DETAILS</h5>
+
+      <form action="./previous_owners.html">
+
+
+
+      <div class="input-group input-group-sm">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="background: none;
+    border: none; font-size: 12px;">Plot ID :</span>
+        </div>
+        <span id="plotid_output" class="form-control" aria-label="small"
+          aria-describedby="inputGroup-sizing-sm" style="border: none; font-size: 12px;">111</span>
+
+
+      </div>
+
+
+      <div class="input-group input-group-sm">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="background: none;
+    border: none; font-size: 12px;">Owner Name :</span>
+        </div>
+        <span id="ownername_output" class="form-control" aria-label="small"
+          aria-describedby="inputGroup-sizing-sm" style="border: none; font-size: 12px;"></span>
+
+      </div>
+
+
+
+      <div class="input-group input-group-sm">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="background: none;
+    border: none; font-size: 12px;">Land Type :</span>
+        </div>
+        <span id="land_output" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm" style="border: none; font-size: 12px;"></span>
+
+      </div>
+
+
+
+
+      <div class="input-group input-group-sm">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="background: none;
+    border: none; font-size: 12px;">Registration Date :</span>
+        </div>
+        <span id="registration_output" class="form-control" aria-label="small"
+          aria-describedby="inputGroup-sizing-sm" style="border: none; font-size: 12px;"></span>
+
+      </div>
+
+      <div class="input-group input-group-sm">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="background: none;
+    border: none; font-size: 12px;">Amount :</span>
+        </div>
+        <span id="amount_output" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm" style="border: none; font-size: 12px;"></span>
+
+      </div>
+
+
+
+
+
+
+
+
+      <div class="input-group input-group-sm">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="background: none;
+    border: none; font-size: 12px;">Phone no:</span>
+        </div>
+        <span id="phoneno_output" class="form-control" aria-label="small"
+          aria-describedby="inputGroup-sizing-sm" style="border: none; font-size: 12px;"></span>
+
+      </div>
+
+      <div class="modal-footer" style="padding: 8px 0 0 0;">
+        <button type="submit" class=" btn btn-primary btn-sm btn-w-h modal-linear-bg-btn" style="height: 32px;
+        width: 147px;
+        font-size: 12px;">Show
+          Previous Owners</button>
+
+      </div>
+
+    </form>
+
+
+
+
+
+
+    </div>
+
+  </div>
+
+
+
+
+
+  <!-- Owner dertils Modal -->
+
+
+  <!-- <div class="main-1" id="previous-owner-div" style=" border: 4px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(135deg, #71b7e6, #9b59b6);">
+    <h3 class="text-center">PREVIOUS OWNER DETAILS</h3>
+
+    <div class="ownerdetails">
+
+
+      <div class="row mb-3" style="margin-left: 50px;">
+        <label for="colFormLabel" class="col-sm-2 col-form-label">Owner Name:</label>
+        <div class="col-sm-10">
+          <h2 id="ownername_output" style="font-size: inherit; line-height: 2.2rem;"></h2> -->
+          <!-- <input type="text" class="form-control" id="colFormLabel" placeholder="Enter Owner Name"> -->
+          <!-- </div>
+      </div> -->
+
+
+
+
+
+
+          <!-- <div class="row mb-3">
+        <label for="colFormLabel" class="col-sm-2 col-form-label">Land Type:</label>
+        <div class="col-sm-10">
+          <h2 id="land_output" style="font-size: inherit; line-height: 2.2rem;"></h2> -->
+          <!-- <input type="text" class="form-control" id="colFormLabel" placeholder="Enter Owner Name"> -->
+          <!-- </div>
+      </div>
+
+
+
+
+          
+      <div class="row mb-3">
+        <label for="colFormLabel" class="col-sm-2 col-form-label">Registration Date:</label>
+        <div class="col-sm-10">
+          <h2 id="registration_output" style="font-size: inherit; line-height: 2.2rem;"></h2> -->
+          <!-- <input type="text" class="form-control" id="colFormLabel" placeholder="Enter Owner Name"> -->
+          <!-- </div>
+      </div>
+
+
+
+
+
+          <div class="row mb-3">
+        <label for="colFormLabel" class="col-sm-2 col-form-label">Amount:</label>
+        <div class="col-sm-10">
+          <h2 id="amount_output" style="font-size: inherit; line-height: 2.2rem;"></h2> -->
+          <!-- <input type="text" class="form-control" id="colFormLabel" placeholder="Enter Owner Name"> -->
+          <!-- </div>
+      </div>
+      <div class="row mb-3">
+        <label for="colFormLabel" class="col-sm-2 col-form-label">Phone no:</label>
+        <div class="col-sm-10">
+          <h2 id="phoneno_output" style="font-size: inherit; line-height: 2.2rem;"></h2> -->
+          <!-- <input type="text" class="form-control" id="colFormLabel" placeholder="Enter Owner Name"> -->
+          <!-- </div>
+      </div> -->
+    <!-- </div>  -->
+
+
+
+
+          <!--     <div class="row mb-3">
+
+      <p>
+        <button class="btn btn-primary linear-bg-btn modal-linear-bg-btn " type="button" data-toggle="collapse"
+          data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          Previous Owners
+        </button>
+      </p>
+
+
+    </div> -->
+
+
+
+
+
+
+
+
+          <!--     <div class="collapse" id="collapseExample">
+      <div class="card card-body">
+        <div class="row md-3">
+          <label for="colFormLabel" class="col-sm-2 col-form-label">Previous Owner Details:</label>
+          <div class="col-sm-10 padding-align">
+            <h3 id="previousowner_output"></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+ -->
+
+
+<!-- </div> -->
+
+
+
+          <!-- ********************************Clock Start*************************** -->
+
+          <footer>
+
+            <!-- <div class="clock d-flex justify-content-center">
+              <div class="hours">
+                <div class="first">
+                  <div class="number">0</div>
+                </div>
+                <div class="second">
+                  <div class="number">0</div>
+                </div>
+              </div>
+              <div class="tick">:</div>
+              <div class="minutes">
+                <div class="first">
+                  <div class="number">0</div>
+                </div>
+                <div class="second">
+                  <div class="number">0</div>
+                </div>
+              </div>
+              <div class="tick">:</div>
+              <div class="seconds">
+                <div class="first">
+                  <div class="number">0</div>
+                </div>
+                <div class="second infinite">
+                  <div class="number">0</div>
+                </div>
+              </div>
+            </div> -->
+
+            <p>Copyright © 2022 All Right Reserved by LRS</p>
+          </footer>
+
+
+
+
+
+
+
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+            crossorigin="anonymous"></script>
+          <!-- Option 1: Bootstrap Bundle with Popper -->
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+
+          <!-- Option 2: Separate Popper and Bootstrap JS -->
+
+
+          <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+            integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+            crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+            integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+            crossorigin="anonymous"></script>
+
+          <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
+          <script src="./js/clock.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+          <!-- Blockchain Code -->
+          <script src='https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js'></script>
+          <script type="text/javascript" src="./js/abi.js"></script>
+                    <script type="text/javascript" src="abiPublic.js"></script>
+          <script type="text/javascript" src="contractAddress.js"></script>
+          
+          <script type="text/javascript">
+
+
+            // <!-- map handeling code -->
+            let arg = [];
+            let map;
+            let co_ordinates;
+             let geocoder;
+            let map1;
+            let allco = [];
+            let infoWindow;
+
+            function split_lat() {
+              const co_ordinate = arguments[0].split(",");
+              return { lat: parseFloat(co_ordinate[0]), lng: parseFloat(co_ordinate[1]) };
+            }
+
+            function initiate_co_ordinates() {
+              // Define the LatLng coordinates for the plot's path.
+              var data= new Array();
+              for(let i=0; i<arguments.length ; i++) {
+                data[i] = split_lat(arguments[i]);
+                co_ordinates=[data]
+              }
+
+              // Construct the plot.
+              const plot = new google.maps.Polygon({
+                paths: co_ordinates,
+                strokeColor: "#FF0000",
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: "#FF0000",
+                fillOpacity: 0.35,
+              });
+
+              return plot;
+            }
+
+            //Initialiization function of map
+            function initMap() {
+              map = new google.maps.Map(document.getElementById("map"),     //Getting map in variable
+                {
+                    zoom: 12,
+                    center: {lat: 16.690429352024985, lng: 74.44727896582123},
+                    mapTypeId: "terrain",
+                });
+              marker= new google.maps.Marker({position: {lat: 0,lng: 0},map: map});
+              geocoder = new google.maps.Geocoder();
+              infoWindow = new google.maps.InfoWindow();
+
+            }
+
+
+
+
+            // function loadlandids( mn)
+
+
+            async function getCurrentAccount() {
+              const accounts = await window.web3.eth.getAccounts();
+              return accounts[0]; r
+            }
+
+            function decodecordinates(enodedgeo) {
+              console.log(enodedgeo);
+              var encode = enodedgeo;
+              var decode = atob(encode)
+              var locations = decode.split(':');
+
+              var geomain = split_lat(locations[0]);
+               console.log(locations);
+              // console.log(geomain);
+              // console.log("here");
+
+              map = new google.maps.Map(document.getElementById("map"),     //Getting map in variable
+                {
+                  zoom: 20,
+                  center: geomain,
+                  mapTypeId: "terrain",
+                });
+              //map.setCenter(geo1);
+              //map.setCenter(locations[0]);
+              map.setZoom(15);
+
+              //initiate_co_ordinates(locations).setMap(map);
+              initiate_co_ordinates(locations[0],locations[1],locations[2],locations[3]).setMap(map);
+              //initiate_co_ordinates(geo1, geo2, geo3, geo4).setMap(map);
+            }
+
+            async function showinfo(){
+              var rlandid = document.getElementById("plotid_input").value;
+              var getGeolocation = await window.publicontract.methods.getGeolocation(rlandid).call();
+              decodecordinates(getGeolocation);
+              showOwner(rlandid);
+            }
+
+            async function showOwner() {
+
+              let rlandid = arguments[0];
+
+              document.getElementById("pop_owner_details").style.visibility = "visible";
+
+
+              
+              const plotidold = document.getElementById('plotid_output');
+              plotidold.innerHTML = rlandid;
+
+
+              updateStatus('fetching Land Data...');
+              console.log(rlandid);
+              var getOwner = await window.publicontract.methods.getOwner(rlandid).call();
+
+              const owner = document.getElementById('ownername_output');
+              owner.innerHTML = getOwner;
+              console.log(owner);
+
+
+              var getLandtype = await window.publicontract.methods.getLandtype(rlandid).call();
+              const land = document.getElementById('land_output');
+              land.innerHTML = getLandtype;
+              console.log(land);
+
+              // var getGeolocation = await window.publicontract.methods.getGeolocation(rlandid).call();
+              // decodecordinates(getGeolocation);
+
+              var getRegdate = await window.publicontract.methods.getRegdate(rlandid).call();
+              const regdate = document.getElementById('registration_output');
+              regdate.innerHTML = getRegdate;
+              console.log(regdate);
+
+              var getAmount = await window.publicontract.methods.getAmount(rlandid).call();
+              const amounts = document.getElementById('amount_output');
+              amounts.innerHTML = getAmount;
+              console.log(amounts);
+
+
+              var getPhoneno = await window.publicontract.methods.getContact(rlandid).call();
+              const phonenos = document.getElementById('phoneno_output');
+              phonenos.innerHTML = getPhoneno;
+              console.log(phonenos);
+              updateStatus(`landid: ${rlandid}\n${getOwner}`);
+            }
+
+            // function previousOwners(){
+            //   document.getElementById("previous-owner-div").style.display = "block";
+            //   document.getElementById("sidebar").style.height = "162vh";
+            // }
+
+    async function loadPublicContract(){
+    return await new window.web3.eth.Contract(abiPublic,PublicAddress);
+}
+
+
+    async function loadWeb3() {
+      if (window.ethereum) {
+        window.web3 = new Web3(window.ethereum);
+        window.ethereum.enable();
+      }
+    }
+
+    async function load() {
+      await loadWeb3();
+      window.publicontract = await loadPublicContract();
+
+
+      //function starting
+      // showOwner();
+      updateStatus('Ready!');
+    }
+
+
+    function updateStatus(status) {
+      // const statusEl = document.getElementById('status');
+      // statusEl.innerHTML = status;
+      console.log(status);
+    }
+
+            function plotZip(plotid){
+
+              document.getElementById("pop_owner_details").style.display = "none";
+              var co1 = [];
+              var zipcode = plotid;
+              console.log(zipcode);
+              //const co = geocode({ address: zipcode });
+              geocode_get({ address: zipcode });
+              LandsFromZipCodes(zipcode);            
+              //draw_zip(co1[0],co1[1],co1[2],co1[3]).setMap(map);              
+            }
+
+
+
+            function placeMarker(map, location,ID) { 
+                clear();
+                document.getElementById("pop_owner_details").style.display = "block";
+               marker = new google.maps.Marker({
+                   position: location,
+                   map: map
+               });
+               
+               var infowindow = new google.maps.InfoWindow({
+                   content: 'Plot ID: '+ID.id  
+               });
+               showOwner(ID.id);
+               //console.log(ID.id);
+               marker.setMap(map);
+               infowindow.open(map,marker);
+            }      
+
+                
+            function clear() {
+                marker.setMap(null);
+            }
+
+             function draw_plot(){
+                // Define the LatLng coordinates for the plot's path.
+
+                let ret_co_ordinates;
+                var data= new Array();
+                for(let i=0; i<arguments.length-1 ; i++) {
+                    data[i] = split_lat(arguments[i]);
+                    ret_co_ordinates=[data]
+                }
+                console.log(ret_co_ordinates);
+                const plot = new google.maps.Polygon({
+                    paths: ret_co_ordinates,
+                    strokeColor: "#FF0000",
+                    strokeOpacity: 1,
+                    strokeWeight: 2,
+                    fillColor: "#000000",
+                    fillOpacity: 0.5,
+                    id: arguments[4],
+                });
+
+                google.maps.event.addListener(plot, 'click', function(event) {
+                    placeMarker(map, event.latLng, plot);
+                });
+                return plot;
+            }
+
+             function draw_zip(){
+              // Define the LatLng coordinates for the plot's path.
+
+              const flightPlanCoordinates = [
+                split_lat(arguments[0]),
+                split_lat(arguments[1]),
+                split_lat(arguments[2]),
+                split_lat(arguments[3]),
+                split_lat(arguments[0]),
+              ];
+          
+              const flightPath = new google.maps.Polyline({
+                path: flightPlanCoordinates,
+                geodesic: true,
+                strokeColor: "#F00000",
+                strokeOpacity: 1.0,
+                strokeWeight: 2,
+              });
+         
+               //flightPath.setMap(map);
+              return flightPath;
+            }
+
+            //Zip Code
+             function geocode_get(request) {
+              // const allco = [];
+              //clear();
+              geocoder.geocode(request).then((result) => {
+              //geocoder.geocode().then((result) => {
+                const { results } = result;
+                map.setCenter(results[0].geometry.location);
+                let lat_long = results[0].geometry.viewport;
+                //console.log(JSON.stringify(results[0], null, 2));
+                res = results;
+                let geo2 = lat_long.Ra.hi;
+                let geo1 = lat_long.zb.hi;
+                let geo4 = lat_long.Ra.lo;
+                let geo3 = lat_long.zb.lo;
+                let co1 = geo1+","+geo2;
+                let co2 = geo1+","+geo4;
+                let co3 = geo3+","+geo4;
+                let co4 = geo3+","+geo2;
+                // allco[0] = co1;
+                // allco[1] = co2;
+                // allco[2] = co3;
+                // allco[3] = co4;
+                allco[0] = split_lat(co1);
+                allco[1] = split_lat(co2);
+                allco[2] = split_lat(co3);
+                allco[3] = split_lat(co4);               
+                draw_zip(co1,co2,co3,co4).setMap(map);                
+                return results;
+              })
+               .catch((e) => {
+                alert("Geocode was not successful for the following reason: " + e);
+               });
+    
+            }
+
+            async function LandsFromZipCodes(){
+              //console.log(arguments[0]);
+
+              var getPincodelandids = await window.publicontract.methods.getPincodelandids(arguments[0]).call();
+              let encode,decode,locations,id;
+              //console.log(getPincodelandids);
+              //let abc = getPincodelandids.slice(1);
+              //console.log(abc);
+              let k;
+              let size=0;
+              for(k=1;getPincodelandids[k] != ',';k++){
+                size++;
+              }
+              //console.log(size);
+              let total_id="";
+              j=0;
+              let s=0;
+              for(let j = 0;j<getPincodelandids.length;j=j+size+1){
+                total_id="";
+                //if(getPincodelandids[j]!=','){
+                  for(let i=j+1;i<=(size+j);i++){
+                    total_id=total_id.concat(getPincodelandids[i]);
+                  }
+                  //console.log(total_id);
+                  //id = getPincodelandids[i];
+                  //console.log(id);
+                  encode = await window.publicontract.methods.getGeolocation(total_id).call();
+                  //console.log(encode);
+                  decode = atob(encode);
+                  //console.log(decode);
+                  locations = decode.split(':');
+                  //console.log(locations);
+                  draw_plot(locations[0],locations[1],locations[2],locations[3],total_id).setMap(map);
+                
+                  //continue;
+                //}
+
+                //console.log(getPincodelandids[j]);
+              }
+
+              /*for(let i=1;i<getPincodelandids.length;i=i+2)
+              {
+                //console.log(getPincodelandids[i]);
+                id = getPincodelandids[i];
+                console.log(id);
+                encode = await window.publicontract.methods.getGeolocation(getPincodelandids[i]).call();
+                console.log(encode);
+                decode = atob(encode);
+                console.log(decode);
+                locations = decode.split(':');
+                console.log(locations);
+                //draw_plot(locations[0],locations[1],locations[2],locations[3],id).setMap(map);
+              }*/
+             }
+
+            function current_location()
+            {
+                
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const pos = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude,
+                        };
+                        getZipfromCurrentLocation(pos);
+                        // marker = new google.maps.Marker({
+                        //   position: pos,
+                        //   map: map,
+                        // });
+
+                        // //console.log(pos);
+                        // //infoWindow.setPosition(pos);
+                        // infoWindow.setContent("You are here !!!");
+                        // infoWindow.open(map,marker);
+                        // map.setCenter(pos);
+                        
+                    },
+                    () => {
+                      handleLocationError(true, infoWindow, map.getCenter());
+                    }
+                  );
+                } else {
+                  // Browser doesn't support Geolocation
+                  handleLocationError(false, infoWindow, map.getCenter());
+                }
+            }
+
+            function getZipfromCurrentLocation(pos){
+                console.log("here");
+                console.log(pos);
+
+                 geocoder.geocode({location: pos}).then((result) => {
+                  const { results } = result;
+                  console.log(JSON.stringify(results[0], null, 2));
+                  let zipcode = results[0].address_components[7].long_name;
+                  console.log(zipcode);
+                  plotZip(zipcode);
+                  return results;
+                }).catch((e) => {
+                  alert("Geocode was not successful for the following reason: " + e);
+                });
+
+                marker = new google.maps.Marker({
+                          position: pos,
+                          map: map,
+                        });
+
+                        //console.log(pos);
+                        //infoWindow.setPosition(pos);
+                        infoWindow.setContent("You are here !!!");
+                        infoWindow.open(map,marker);
+                        map.setCenter(pos);
+            }
+            //window.initMap = initMap;
+
+    load();
+
+
+
+          </script>
+</body>
+
+</html>

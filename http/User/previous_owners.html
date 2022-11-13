@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Search Result</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/search.css" />
+  <link rel="stylesheet" href="./css/footer.css" />
+  <link rel="stylesheet" href="./css/table.css" />
+  <!-- <link rel="stylesheet" href="./css/side-menu.css"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://kit.fontawesome.com/7507e36a2a.js" crossorigin="anonymous"></script>
+
+
+  <style>
+
+body{
+      background-color: #efefef;
+    }
+    #map {
+      height: 100%;
+      width: 100%;
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'PT Serif', serif;
+    }
+
+    .main {
+      margin-left: 350px;
+      padding: 12px;
+      height: 106vh;
+      margin-right: 6px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+    }
+
+    .main-1 {
+      margin-left: 350px;
+      padding: 12px;
+      height: 106vh;
+      margin-right: 6px;
+      border-radius: 15px;
+      margin-bottom: 10px;
+
+    }
+
+    .main-1 .ownerdetail_container {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .main-2 {
+      /* margin-left: 350px; */
+      padding: 0;
+      margin: 0;
+      /* height: 77vh; */
+      /* margin-right: 6px; */
+      /* border-radius: 15px; */
+      /* margin-bottom: 10px; */
+
+    }
+
+
+
+    .map-container-2 {
+      overflow: hidden;
+      padding-bottom: 56.25%;
+      position: relative;
+      height: 0;
+    }
+
+    .map-container-2 iframe {
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+    }
+
+    .modal-linear-bg-btn {
+      width: 200px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      cursor: pointer;
+
+      height: 42px;
+      text-align: center;
+      border: none;
+      background-size: 300% 100%;
+
+      border-radius: 50px;
+      moz-transition: all .4s ease-in-out;
+      -o-transition: all .4s ease-in-out;
+      -webkit-transition: all .4s ease-in-out;
+      transition: all .4s ease-in-out;
+    }
+
+    .modal-linear-bg-btn:hover {
+      background-position: 100% 0;
+      moz-transition: all .4s ease-in-out;
+      -o-transition: all .4s ease-in-out;
+      -webkit-transition: all .4s ease-in-out;
+      transition: all .4s ease-in-out;
+    }
+
+    .modal-linear-bg-btn:focus {
+      outline: none;
+    }
+
+    .modal-linear-bg-btn {
+      /* background: linear-gradient(-135deg, #c850c0, #4158d0);
+      border: linear-gradient(-135deg, #c850c0, #4158d0); */
+      box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
+      background-image: linear-gradient(to right, #667eea, #003a55, #6B8DD6, #003a55);
+
+    }
+
+    #pop_owner_details {
+      /* display: none; */
+      visibility: hidden;
+      position: absolute;
+      bottom: 0;
+      width: 30%;
+      height: 175px;
+      border-radius: 15px;
+      box-shadow: 0 3px 6px rgb(0 0 0);
+      background-color: white;
+      margin-left: 332px;
+      padding: 15px;
+
+
+    }
+
+    .input-group>.input-group-prepend>.input-group-text {
+      width: 148px;
+    }
+.fa-arrow-down:before {
+    content: "\f063";
+    font-size: 50px;
+}
+  </style>
+</head>
+
+<body>
+  <div class="sidebar" id="sidebar">
+    <h2>LRS</h2>
+    <div class="container-login">
+      <div class="title"> Your Land Details</div>
+      <div class="content">
+        <form>
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Plot ID:</span>
+              <input type="text" id="search_input" placeholder="Enter Your Plot ID">
+            </div>
+            <div class="button">
+              <input type="button" value="Search" onclick="plotid = document.getElementById('search_input').value; showPreviousOwner(plotid);"
+              id="plotid_search">
+            </div>
+            <!-- <div class="input-box">
+              <span class="details">Pincode:</span>
+              <input type="text" id="pincode_input" placeholder="Enter your Area Pincode">
+            </div> -->
+          </div>
+          <!-- <div class="button">
+            <input type="button" id="user_search_button" value="Search" onclick="alert('Function not added yet!!!')">
+          </div> -->
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <div id="main-1" class="main-1" style=" border: 4px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(135deg, #71b7e6, #003a55);">
+    <h3 class="text-center">PREVIOUS OWNER DETAILS</h3>
+    <br>
+
+    <div class="ownerdetails">
+
+
+      <section id="table-section">
+
+        <td>
+          <!--Nested Table-->
+          <table class="list" id="viewprevious_owners" style="background-color: #C2976D;">
+            <h4 class="text-center" style="font-size: 17px;">Plot Id: <p id="view_plotid"
+                style="display: inline; font-size: 17px;"></p>
+            </h4>
+            <!--Table Head-->
+            <thead>
+              <!--Row-2-->
+              <tr>
+                <!-- <th>Plot ID</th> -->
+                <th>Owner Name</th>
+                <th>Registration Date</th>
+                <!-- <tr><i class="fa-solid fa-arrow-down"></i></tr> -->
+
+              </tr>
+            </thead>
+            <!--Table Body-->
+            <tbody>
+              <!-- <tr id="myTablerow"></tr> -->
+            </tbody>
+          </table>
+        </td>
+      </section>
+
+      <!-- <div class="input-group input-group-sm mb-3"> -->
+        <!-- <div class="input-group-prepend"> -->
+          <!-- <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px;">Owner Name</span>
+          <span class="input-group-text" id="inputGroup-sizing-sm" style="width: 175px;">Date of Registration</span> -->
+        <!-- </div> -->
+       <!-- <span id="view_landid" class="form-control" aria-label="small" aria-describedby="inputGroup-sizing-sm"> -->
+        <!-- <ul id="view_preowner" style="list-style: none;">
+        <ul id="view_preregistration" style="list-style: none;">
+        </ul>
+      </span>   -->
+      <!-- </div> -->
+    </div>
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+  <!-- ********************************Clock Start*************************** -->
+
+  <footer>
+
+
+
+    <p>Copyright © 2022 All Right Reserved by LRS</p>
+  </footer>
+
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <script src="./js/clock.js"></script>
+  <!-- <script src="./js/table.js"></script> -->
+
+
+   <!-- Blockchain Code -->
+   <script src='https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js'></script>
+   <script type="text/javascript" src="abiPublic.js"></script>
+   <!-- <script type="text/javascript" src="abiPrivate.js"></script> -->
+   <script type="text/javascript" src="contractAddress.js"></script>
+   
+     <script type="text/javascript">
+       async function showPreviousOwner(plotid) {
+        //  document.getElementById("main-1").style.display = "block";
+        //  document.getElementById("footer").style.marginTop = "4vh";
+        rlandid = plotid;
+         updateStatus('Previous land function');
+         console.log(rlandid);
+         var getOwners = await window.publicontract.methods.TrackLand(rlandid).call();
+   
+         // const owner = document.getElementById('ownername_output');
+         // owner.innerHTML = getOwners;
+         // console.log(getOwners);
+         var newSplitgetOwners = getOwners.slice(1);
+   
+         var Owners = newSplitgetOwners.split(',');
+         console.log(Owners);
+         const previousOwners = [];
+         splitDetails();
+         function splitDetails() {
+           for (let i = 0; i < Owners.length; i++) {
+             previousOwners.push(Owners[i].split(":"));
+   
+           }
+   
+         }
+         console.log(previousOwners);
+   
+         updateStatus(`landid: ${rlandid}`);
+   
+         document.getElementById("view_plotid").innerText = plotid;
+   
+         $("#viewprevious_owners tbody tr").remove();
+         // document.getElementsByTagName("tr").remove();
+   
+         var items = [];
+         items = previousOwners;
+         var table = $('#viewprevious_owners');
+         var row, cell;
+   
+   
+   
+         for (var i = 0; i < items.length; i++) {
+           row = $('<tr />');
+           table.append(row);
+           
+           
+           for (var j = 0; j < items[i].length; j++) {   
+             cell = $('<td>' + items[i][j] + '</td>')
+             //  cell = $('<td>' + `<i class="fa-solid fa-arrow-down"></i>` + '</td>')
+             
+             row.append(cell);
+            }
+            table.append('<i class="fa-solid fa-arrow-down"></i>');
+           
+         }
+   
+   
+   
+   
+   
+         // let list = document.getElementById("viewprevious_owners");
+   
+         // previousOwners.forEach((item) => {
+         //   let li = document.createElement("li");
+         //   li.innerText = item;
+         //   list.appendChild(li);
+         // });
+   
+       }
+
+
+      // function getParameter() {
+      // let urlString = window.location.href;
+      // let paramString = urlString.split('?')[1];
+      // let queryString = new URLSearchParams(paramString);
+
+      // for (let pair of queryString.entries()) {
+      //   console.log("Key is:" + pair[0]);
+      //   console.log("Value is:" + pair[1]);
+      //   var paramvalue = pair[1];
+      // }
+      // return paramvalue;
+      // }
+
+      //  function arrow(){
+      //   document.getElementsByTagName('tr').innerHTML = `<i class="fa-solid fa-arrow-down"></i>`;
+        
+      //  }
+   
+   
+   
+   
+  //  async function loadPrivateContract() {
+  //    return await new window.web3.eth.Contract(abiPrivate,PrivateAddress);
+  //  }
+   
+   async function loadPublicContract(){
+     return await new window.web3.eth.Contract(abiPublic,PublicAddress);
+   }
+   
+   
+       async function loadWeb3() {
+         if (window.ethereum) {
+           window.web3 = new Web3(window.ethereum);
+           window.ethereum.enable();
+         }
+       }
+   
+       async function load() {
+         await loadWeb3();
+        //  window.privatecontract = await loadPrivateContract();
+         window.publicontract = await loadPublicContract();
+   
+   
+         //function starting
+         // showOwner();
+         updateStatus('Ready!');
+       }
+   
+   
+       function updateStatus(status) {
+         // const statusEl = document.getElementById('status');
+         // statusEl.innerHTML = status;
+         console.log(status);
+       }
+   
+   
+       load();
+   
+     </script>
+   
+   
+
+
+
+
+</body>
+
+</html>
